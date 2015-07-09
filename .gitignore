@@ -1,0 +1,4 @@
+*.classpath
+*.project
+code/.settings/desktop.ini
+code/.settings/org.eclipse.jdt.core.prefs

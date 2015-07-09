@@ -1,0 +1,6 @@
+<resources>
+
+    <dimen name="main_activity_foto_perfil_witdh">150dp</dimen>
+    <dimen name="main_activity_foto_perfil_height">150dp</dimen>
+
+</resources>

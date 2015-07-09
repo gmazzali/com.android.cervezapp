@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Cervezup</string>
+    <string name="action_settings">Settings</string>
+    <string name="main_activity_foto_perfil_content">Foto de Perfil</string>
+    <string name="main_activity_boton_bares">Bares</string>
+    <string name="main_activity_boton_buscar_bares">Buscar</string>
+
+</resources>
