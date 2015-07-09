@@ -1,4 +1,4 @@
-package com.android.cervezup.view;
+package com.android.cervezapp.view;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,9 +8,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.android.cervezapp.model.util.RequestCodeEnum;
+import com.android.cervezapp.model.util.ResponseCodeEnum;
 import com.android.cervezup.R;
-import com.android.cervezup.model.util.RequestCodeEnum;
-import com.android.cervezup.model.util.ResponseCodeEnum;
 
 public class MainActivity extends Activity {
 
