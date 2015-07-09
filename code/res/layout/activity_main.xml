@@ -11,11 +11,11 @@
         android:layout_height="@dimen/main_activity_foto_perfil_height"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
+        android:adjustViewBounds="true"
         android:contentDescription="@string/main_activity_foto_perfil_content"
         android:onClick="ejecutarCambioDeFotoDePerfil"
-        android:src="@drawable/leprechaun_drunk_icon"
-        android:background="#000000"
-        android:padding="1dp" />
+        android:scaleType="fitCenter"
+        android:src="@drawable/leprechaun_drunk_icon" />
 
     <LinearLayout
         android:id="@+id/horizontalLayout1"
@@ -43,7 +43,6 @@
             android:layout_weight="1"
             android:ems="10"
             android:text="@string/main_activity_boton_buscar_bares" />
-
     </LinearLayout>
 
 </RelativeLayout>

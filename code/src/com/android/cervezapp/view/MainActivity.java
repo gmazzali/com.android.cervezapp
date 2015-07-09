@@ -7,6 +7,7 @@ import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.android.cervezapp.model.util.RequestCodeEnum;
 import com.android.cervezapp.model.util.ResponseCodeEnum;
@@ -43,17 +44,20 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		RequestCodeEnum request = RequestCodeEnum.get(requestCode);
-		ResponseCodeEnum response = ResponseCodeEnum.get(resultCode);
+		ResponseCodeEnum response = ResponseCodeEnum.get(request, resultCode);
 
 		if (request != null && response != null) {
 			switch (request) {
-				
+
 				case SACAR_FOTO_PERFIL:
 					switch (response) {
-						
+
 						case SACAR_FOTO_PERFIL_EXITOSO:
+							ImageView fotoPerfilImageView = (ImageView) this.findViewById(R.id.fotoPerfilImageView);
+							fotoPerfilImageView.setImageURI(null);
+							fotoPerfilImageView.setImageURI(data.getData());
 							break;
-							
+
 						case SACAR_FOTO_PERFIL_FALLIDO:
 							break;
 					}
