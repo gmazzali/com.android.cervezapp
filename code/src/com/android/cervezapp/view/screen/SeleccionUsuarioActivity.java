@@ -1,4 +1,4 @@
-package com.android.cervezapp.view;
+package com.android.cervezapp.view.screen;
 
 import android.app.Activity;
 import android.os.Bundle;

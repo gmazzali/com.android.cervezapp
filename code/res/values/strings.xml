@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Cervezapp</string>
+    <string name="title_main_activity">Cervezapp</string>
     <string name="action_settings">Configuración</string>
     <string name="main_activity_foto_perfil_content">Foto de Perfil</string>
     <string name="main_activity_boton_bares">BARES</string>
