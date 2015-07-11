@@ -3,35 +3,57 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_centerHorizontal="true"
+    android:orientation="vertical"
     tools:context="com.android.cervezapp.view.MainActivity" >
 
-    <ImageView
-        android:id="@+id/fotoPerfilImageView"
-        android:layout_width="@dimen/main_activity_foto_perfil_witdh"
-        android:layout_height="@dimen/main_activity_foto_perfil_height"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:adjustViewBounds="true"
-        android:contentDescription="@string/main_activity_foto_perfil_content"
-        android:onClick="ejecutarCambioDeFotoDePerfil"
-        android:scaleType="fitCenter"
-        android:src="@drawable/leprechaun_drunk_icon" />
-
-    <LinearLayout
+     <LinearLayout
         android:id="@+id/horizontalLayout1"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/fotoPerfilImageView"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical" >
+        
+	    <ImageView
+	        android:id="@+id/fotoPerfilImageView"
+	        android:layout_width="@dimen/main_activity_foto_perfil_witdh"
+	        android:layout_height="@dimen/main_activity_foto_perfil_height"
+	        android:layout_marginTop="5dp"
+	        android:adjustViewBounds="true"
+	        android:contentDescription="@string/main_activity_foto_perfil_content"
+	        android:scaleType="fitCenter"
+	        android:src="@drawable/leprechaun_drunk_icon" />
+
+	    <Button
+	        android:id="@+id/fotoButton"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="5dp"
+	        android:layout_weight="1"
+	        android:drawableTop="@drawable/cam2_2"
+	        android:ems="10"
+	        android:onClick="ejecutarCambioDeFotoDePerfil"
+	        android:text="@string/main_activity_boton_sacar_foto" />
+
+	</LinearLayout>
+	
+    <LinearLayout
+        android:id="@+id/horizontalLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/horizontalLayout1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal" >
 
         <Button
             android:id="@+id/baresButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="5dp"
             android:layout_weight="1"
             android:ems="10"
             android:text="@string/main_activity_boton_bares"
@@ -41,7 +63,7 @@
             android:id="@+id/buscarBaresButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="5dp"
             android:layout_weight="1"
             android:ems="10"
             android:text="@string/main_activity_boton_buscar_bares"
