@@ -7,5 +7,7 @@
     <string name="main_activity_boton_bares">BARES</string>
     <string name="main_activity_boton_buscar_bares">BUSCAR</string>
     <string name="main_activity_boton_sacar_foto">TOMAR FOTO</string>
+    <string name="title_activity_seleccion_usuario">SeleccionUsuarioActivity</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>
