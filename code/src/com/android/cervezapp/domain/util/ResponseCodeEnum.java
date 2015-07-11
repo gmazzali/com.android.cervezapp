@@ -1,4 +1,4 @@
-package com.android.cervezapp.model.util;
+package com.android.cervezapp.domain.util;
 
 /**
  * @author Billy
