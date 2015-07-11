@@ -3,6 +3,7 @@ package com.android.cervezapp.model.util;
 /**
  * @author Billy
  */
+
 public enum RequestCodeEnum {
 
 	SACAR_FOTO_PERFIL(100);
