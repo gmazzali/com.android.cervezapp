@@ -16,11 +16,11 @@
         android:name="Cervezapp"
         android:allowBackup="true"
         android:icon="@drawable/pub"
-        android:label="@string/title_main_activity"
+        android:label="@string/main.activity.title"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.android.cervezapp.view.screen.MainActivity"
-            android:label="@string/title_main_activity" >
+            android:name="com.android.cervezapp.view.screen.SeleccionUsuarioActivity"
+            android:label="@string/seleccion.usuario.activity.title" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,12 +28,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.android.cervezapp.view.screen.SeleccionUsuarioActivity"
-            android:label="@string/title_activity_seleccion_usuario" >
+            android:name="com.android.cervezapp.view.screen.MainActivity"
+            android:label="@string/main.activity.title" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-                <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.android.cervezapp.view.screen.EdicionUsuarioActivity"
+            android:label="@string/edicion.usuario.activity.title" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
     </application>

@@ -4,8 +4,10 @@ import java.io.Serializable;
 
 import android.graphics.Bitmap;
 
+import com.android.cervezapp.business.util.BitmapUtility;
 import com.android.cervezapp.domain.model.Usuario;
 import com.android.cervezapp.persistence.dao.UsuarioDao;
+import com.android.cervezapp.persistence.util.IdGenerator;
 
 /**
  * @author Billy
@@ -36,7 +38,7 @@ public class UsuarioService implements Serializable {
 			usuario.setNombre(null);
 			usuario.setApellido(null);
 			usuario.setEmail(null);
-			usuario.setFoto(fotoDefault);
+			usuario.setFoto(BitmapUtility.getBytes(fotoDefault));
 			this.usuarioDao.saveUsuario(usuario);
 		}
 		return usuario;
@@ -47,6 +49,7 @@ public class UsuarioService implements Serializable {
 	}
 
 	public void saveUsuario(Usuario usuario) {
+		usuario.setId(IdGenerator.getNextId(Usuario.class));
 		this.usuarioDao.saveUsuario(usuario);
 	}
 

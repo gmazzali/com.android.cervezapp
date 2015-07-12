@@ -2,9 +2,8 @@ package com.android.cervezapp.domain.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-
-import android.graphics.Bitmap;
 
 public class Usuario implements Serializable {
 
@@ -18,9 +17,13 @@ public class Usuario implements Serializable {
 
 	private String apellido;
 
+	private Date fechaNacimiento;
+
+	private String telefono;
+
 	private String email;
 
-	private Bitmap foto;
+	private byte[] foto;
 
 	private List<Bar> baresFavoritos = new ArrayList<Bar>();
 
@@ -34,18 +37,23 @@ public class Usuario implements Serializable {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		Usuario other = (Usuario) obj;
 		if (id == null) {
-			if (other.id != null)
+			if (other.id != null) {
 				return false;
-		} else if (!id.equals(other.id))
+			}
+		} else if (!id.equals(other.id)) {
 			return false;
+		}
 		return true;
 	}
 
@@ -81,6 +89,22 @@ public class Usuario implements Serializable {
 		this.apellido = apellido;
 	}
 
+	public Date getFechaNacimiento() {
+		return fechaNacimiento;
+	}
+
+	public void setFechaNacimiento(Date fechaNacimiento) {
+		this.fechaNacimiento = fechaNacimiento;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -89,11 +113,11 @@ public class Usuario implements Serializable {
 		this.email = email;
 	}
 
-	public Bitmap getFoto() {
+	public byte[] getFoto() {
 		return foto;
 	}
 
-	public void setFoto(Bitmap foto) {
+	public void setFoto(byte[] foto) {
 		this.foto = foto;
 	}
 

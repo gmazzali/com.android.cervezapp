@@ -6,7 +6,11 @@ package com.android.cervezapp.domain.util;
 
 public enum RequestCodeEnum {
 
-	SACAR_FOTO_PERFIL(100);
+	SACAR_FOTO_PERFIL(100), 
+	
+	AGREGAR_USUARIO(101), 
+	
+	MODIFICAR_USUARIO(102);
 
 	public static RequestCodeEnum get(int code) {
 		for (RequestCodeEnum request : values()) {
