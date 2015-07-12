@@ -37,6 +37,7 @@ public class UsuarioAdapter extends ArrayAdapter<Usuario> {
 		usuarioUserNameTextView.setText(usuario.getUserName());
 		usuarioEmailTextView.setText(usuario.getEmail());
 
+		convertView.setBackgroundResource(R.color.default_color);
 		return convertView;
 	}
 }

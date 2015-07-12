@@ -10,9 +10,9 @@
         android:layout_height="wrap_content"
         android:orientation="vertical" >
 
-        <LinearLayout
-            android:id="@+id/layoutFotoEdicionUsuario"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:id="@+id/fotoPerfilEdicionLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="10dp"
@@ -24,7 +24,9 @@
                 android:id="@+id/fotoPerfilEdicionImageView"
                 android:layout_width="@dimen/edicion.usuario.activity.foto.perfil.witdh"
                 android:layout_height="@dimen/edicion.usuario.activity.foto.perfil.height"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="5dp"
+                android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/edicion.usuario.activity.foto.perfil.content"
                 android:scaleType="fitCenter"
@@ -32,145 +34,176 @@
 
             <Button
                 android:id="@+id/fotoButton"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_below="@+id/fotoPerfilEdicionImageView"
+                android:layout_centerHorizontal="true"
                 android:layout_weight="1"
-                android:drawableTop="@drawable/cam2_2"
+                android:drawableLeft="@drawable/cam2_2"
                 android:ems="10"
                 android:onClick="ejecutarCambioDeFotoDePerfil"
                 android:text="@string/edicion.usuario.activity.boton.sacar.foto" />
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="start"
-            android:paddingTop="10dp"
-            android:text="@string/edicion.usuario.activity.label.username" />
-
-        <EditText
-            android:id="@+id/userNameEditText"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/edicion.usuario.activity.field.username"
-            android:inputType="text"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="start"
-            android:paddingTop="10dp"
-            android:text="@string/edicion.usuario.activity.label.name" />
-
-        <EditText
-            android:id="@+id/nameEditText"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/edicion.usuario.activity.field.name"
-            android:inputType="text"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="start"
-            android:paddingTop="10dp"
-            android:text="@string/edicion.usuario.activity.label.lastname" />
-
-        <EditText
-            android:id="@+id/lastnameEditText"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/edicion.usuario.activity.field.lastname"
-            android:inputType="text"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="start"
-            android:paddingTop="15dp"
-            android:text="@string/edicion.usuario.activity.label.birthday" />
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:orientation="horizontal" >
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="10dp"
+                android:text="@string/edicion.usuario.activity.label.username" />
 
             <EditText
-                android:id="@+id/birthdayEditText"
-                android:layout_width="0dp"
+                android:id="@+id/userNameEditText"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.8"
-                android:hint="@string/edicion.usuario.activity.field.birthday"
-                android:inputType="phone"
+                android:hint="@string/edicion.usuario.activity.field.username"
+                android:inputType="text"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
-            <Button
-                android:id="@+id/birthdayButton"
-                style="@android:attr/buttonBarStyle"
-                android:layout_width="0dp"
+            <TextView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.2"
-                android:text="@string/edicion.usuario.activity.button.birthday" />
-        </LinearLayout>
+                android:gravity="start"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="10dp"
+                android:text="@string/edicion.usuario.activity.label.name" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="start"
-            android:paddingTop="10dp"
-            android:text="@string/edicion.usuario.activity.label.email" />
-
-        <EditText
-            android:id="@+id/emailEditText"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/edicion.usuario.activity.field.email"
-            android:inputType="textEmailAddress"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="start"
-            android:paddingTop="10dp"
-            android:text="@string/edicion.usuario.activity.label.telephone" />
-
-        <EditText
-            android:id="@+id/telephoneEditText"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/edicion.usuario.activity.field.telephone"
-            android:inputType="text"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="10dp" >
-
-            <Button
-                style="@android:attr/buttonBarStyle"
-                android:layout_width="0dp"
+            <EditText
+                android:id="@+id/nameEditText"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:layout_weight="1"
-                android:onClick="guardarUsuario"
-                android:text="@string/edicion.usuario.activity.button.accept" />
+                android:hint="@string/edicion.usuario.activity.field.name"
+                android:inputType="text"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-            <Button
-                style="@android:attr/buttonBarStyle"
-                android:layout_width="0dp"
+            <TextView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_weight="1"
-                android:onClick="cancelarUsuario"
-                android:text="@string/edicion.usuario.activity.button.cancel" />
+                android:gravity="start"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="10dp"
+                android:text="@string/edicion.usuario.activity.label.lastname" />
+
+            <EditText
+                android:id="@+id/lastnameEditText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/edicion.usuario.activity.field.lastname"
+                android:inputType="text"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="15dp"
+                android:text="@string/edicion.usuario.activity.label.birthday" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp" >
+
+                <EditText
+                    android:id="@+id/birthdayEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:hint="@string/edicion.usuario.activity.field.birthday"
+                    android:inputType="phone"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <Button
+                    android:id="@+id/birthdayButton"
+                    style="@android:attr/buttonBarStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:text="@string/edicion.usuario.activity.button.birthday" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="10dp"
+                android:text="@string/edicion.usuario.activity.label.email" />
+
+            <EditText
+                android:id="@+id/emailEditText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/edicion.usuario.activity.field.email"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="10dp"
+                android:text="@string/edicion.usuario.activity.label.telephone" />
+
+            <EditText
+                android:id="@+id/telephoneEditText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/edicion.usuario.activity.field.telephone"
+                android:inputType="text"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="10dp" >
+
+                <Button
+                    style="@android:attr/buttonBarStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_weight="1"
+                    android:onClick="guardarUsuario"
+                    android:text="@string/edicion.usuario.activity.button.accept" />
+
+                <Button
+                    style="@android:attr/buttonBarStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_weight="1"
+                    android:onClick="cancelarUsuario"
+                    android:text="@string/edicion.usuario.activity.button.cancel" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 

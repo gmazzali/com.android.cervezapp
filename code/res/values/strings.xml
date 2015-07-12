@@ -10,9 +10,10 @@
     <string name="seleccion.usuario.activity.title">Cervezapp</string>
     <string name="seleccion.usuario.activity.button.add">Agregar usuario</string>
     <string name="seleccion.usuario.activity.button.modify">Modificar usuario</string>
+    <string name="seleccion.usuario.activity.button.login">Ingresar</string>
     <string name="edicion.usuario.activity.title">Usuario</string>
     <string name="edicion.usuario.activity.foto.perfil.content">Foto de Perfil</string>
-    <string name="edicion.usuario.activity.boton.sacar.foto">TOMAR FOTO</string>
+    <string name="edicion.usuario.activity.boton.sacar.foto">Tomar foto</string>
     <string name="edicion.usuario.activity.label.username">Nombre usuario:</string>
     <string name="edicion.usuario.activity.field.username">Nombre usuario</string>
     <string name="edicion.usuario.activity.label.name">Nombre:</string>

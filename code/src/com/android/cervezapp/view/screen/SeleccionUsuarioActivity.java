@@ -46,8 +46,10 @@ public class SeleccionUsuarioActivity extends Activity {
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				if (posicionSeleccionada != position) {
 					posicionSeleccionada = position;
+					view.setBackgroundResource(R.color.pressed_color);
 				} else {
 					posicionSeleccionada = -1;
+					view.setBackgroundResource(R.color.default_color);
 				}
 			}
 		});
@@ -64,6 +66,19 @@ public class SeleccionUsuarioActivity extends Activity {
 			Intent intent = new Intent(this, EdicionUsuarioActivity.class);
 			intent.putExtra(Usuario.class.getName(), usuario);
 			this.startActivityForResult(intent, RequestCodeEnum.MODIFICAR_USUARIO.getRequest());
+		} else {
+			Toast.makeText(this, "Seleccione un usuario para modificar", Toast.LENGTH_SHORT).show();
+		}
+	}
+
+	public void ingresarSistema(View view) {
+		if (this.posicionSeleccionada >= 0) {
+			Usuario usuario = (Usuario) this.usuariosListView.getItemAtPosition(this.posicionSeleccionada);
+			Intent intent = new Intent(this, MainActivity.class);
+			intent.putExtra(Usuario.class.getName(), usuario);
+			this.startActivity(intent);
+		} else {
+			Toast.makeText(this, "Seleccione un usuario para ingresar al sistema", Toast.LENGTH_SHORT).show();
 		}
 	}
 
