@@ -8,6 +8,9 @@ import java.util.Map;
 
 import com.android.cervezapp.domain.model.Usuario;
 
+/**
+ * @author Billy
+ */
 public class UsuarioDao implements Serializable {
 
 	private static final long serialVersionUID = 1L;
