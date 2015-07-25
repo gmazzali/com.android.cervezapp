@@ -1,7 +1,9 @@
 package com.android.cervezapp.persistence.dao;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.android.cervezapp.domain.model.Usuario;
@@ -19,6 +21,10 @@ public class UsuarioDao implements Serializable {
 	}
 
 	private UsuarioDao() {
+	}
+
+	public List<Usuario> getAllUsuarios() {
+		return new ArrayList<Usuario>(this.mapa.values());
 	}
 
 	public Usuario getById(Long id) {

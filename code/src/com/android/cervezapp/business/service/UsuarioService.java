@@ -1,6 +1,7 @@
 package com.android.cervezapp.business.service;
 
 import java.io.Serializable;
+import java.util.List;
 
 import android.graphics.Bitmap;
 
@@ -42,6 +43,10 @@ public class UsuarioService implements Serializable {
 			this.usuarioDao.saveUsuario(usuario);
 		}
 		return usuario;
+	}
+
+	public List<Usuario> getAllUsuarios() {
+		return this.usuarioDao.getAllUsuarios();
 	}
 
 	public Usuario getById(Long id) {
