@@ -22,6 +22,7 @@ import com.android.cervezapp.domain.model.Usuario;
 import com.android.cervezapp.domain.util.RequestCodeEnum;
 import com.android.cervezapp.domain.util.ResponseCodeEnum;
 import com.android.cervezapp.view.listener.CambiarFechaListener;
+import com.android.cervezapp.view.util.ImageHolder;
 import com.android.cervezapp.view.watcher.ApellidoWatcher;
 import com.android.cervezapp.view.watcher.EmailWatcher;
 import com.android.cervezapp.view.watcher.FechaWatcher;
@@ -70,7 +71,7 @@ public class EdicionUsuarioActivity extends Activity {
 		this.fechaNacimientoButton = (Button) this.findViewById(R.id.birthdayButton);
 		this.telefonoEditText = (EditText) this.findViewById(R.id.telephoneEditText);
 		this.emailEditText = (EditText) this.findViewById(R.id.emailEditText);
-		
+
 		this.userNameEditText.addTextChangedListener(new UserWatcher(this.userNameEditText));
 		this.nombreEditText.addTextChangedListener(new NombreWatcher(this.nombreEditText));
 		this.apellidoEditText.addTextChangedListener(new ApellidoWatcher(this.apellidoEditText));
@@ -85,7 +86,7 @@ public class EdicionUsuarioActivity extends Activity {
 
 	private void setUsuario() {
 		if (!this.usuarioNuevo) {
-			this.fotoPerfilImageView.setImageBitmap(BitmapUtility.getImage(this.usuario.getFoto()));
+			ImageHolder.setFoto(BitmapUtility.getImage(this.usuario.getFoto()));
 			this.userNameEditText.setText(this.usuario.getUserName());
 			this.nombreEditText.setText(this.usuario.getNombre());
 			this.apellidoEditText.setText(this.usuario.getApellido());
@@ -95,6 +96,9 @@ public class EdicionUsuarioActivity extends Activity {
 			}
 			this.telefonoEditText.setText(this.usuario.getTelefono());
 			this.emailEditText.setText(this.usuario.getEmail());
+		}
+		if (ImageHolder.getFoto() != null) {
+			this.fotoPerfilImageView.setImageBitmap(ImageHolder.getFoto());
 		}
 	}
 
@@ -183,7 +187,9 @@ public class EdicionUsuarioActivity extends Activity {
 					switch (response) {
 
 						case SACAR_FOTO_PERFIL_EXITOSO:
-							this.fotoPerfilImageView.setImageBitmap((Bitmap) data.getExtras().get("data"));
+							Bitmap foto = (Bitmap) data.getExtras().get("data");
+							ImageHolder.setFoto(foto);
+							this.fotoPerfilImageView.setImageBitmap(ImageHolder.getFoto());
 							break;
 
 						case SACAR_FOTO_PERFIL_FALLIDO:

@@ -18,7 +18,7 @@ public class NombreWatcher implements TextWatcher {
 
 	@Override
 	public void afterTextChanged(Editable s) {
-		String nombre = this.component.getText().toString();
+		String nombre = s.toString().toString();
 		if (nombre.trim().isEmpty()) {
 			this.component.setError("El nombre no puede estar vacío");
 		} else if (nombre.trim().length() < 3) {
