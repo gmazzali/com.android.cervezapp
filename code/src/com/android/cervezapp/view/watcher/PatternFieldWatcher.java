@@ -2,20 +2,20 @@ package com.android.cervezapp.view.watcher;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.widget.TextView;
+import android.widget.EditText;
 
 /**
  * @author Billy
  */
 public abstract class PatternFieldWatcher implements TextWatcher {
 
-	private TextView component = null;
+	private EditText component = null;
 
 	private String pattern = null;
 
 	private String failMessage = null;
 
-	public PatternFieldWatcher(TextView component, String pattern, String failMessage) {
+	public PatternFieldWatcher(EditText component, String pattern, String failMessage) {
 		super();
 		this.component = component;
 		this.pattern = pattern;
@@ -24,7 +24,7 @@ public abstract class PatternFieldWatcher implements TextWatcher {
 
 	@Override
 	public void afterTextChanged(Editable s) {
-		String fecha = this.component.getText().toString();
+		String fecha = s.toString();
 		if (!fecha.equals("") && !fecha.matches(this.pattern)) {
 			this.component.setError(this.failMessage);
 		} else {

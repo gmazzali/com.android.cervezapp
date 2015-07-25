@@ -20,6 +20,9 @@
     <string name="edicion.usuario.activity.field.name">Nombre</string>
     <string name="edicion.usuario.activity.label.lastname">Apellido:</string>
     <string name="edicion.usuario.activity.field.lastname">Apellido</string>
+    <string name="edicion.usuario.activity.label.sex">Sexo:</string>
+    <string name="edicion.usuario.activity.field.sex.male">Masculino</string>
+    <string name="edicion.usuario.activity.field.sex.female">Femenino</string>
     <string name="edicion.usuario.activity.label.birthday">Fecha Nacimiento:</string>
     <string name="edicion.usuario.activity.field.birthday">Fecha Nacimiento</string>
     <string name="edicion.usuario.activity.button.birthday">&#8230;</string>

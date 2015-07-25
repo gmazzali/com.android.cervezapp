@@ -37,6 +37,7 @@ public class SeleccionUsuarioActivity extends Activity {
 		this.setContentView(R.layout.activity_seleccion_usuario);
 
 		this.usuarioAdapter = new UsuarioAdapter(this);
+		this.usuarioAdapter.addAll(this.usuarioService.getAllUsuarios());
 
 		this.usuariosListView = (ListView) this.findViewById(R.id.usuarioListView);
 		this.usuariosListView.setAdapter(this.usuarioAdapter);

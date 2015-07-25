@@ -2,23 +2,23 @@ package com.android.cervezapp.view.watcher;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.widget.TextView;
+import android.widget.EditText;
 
 /**
  * @author Billy
  */
 public class ApellidoWatcher implements TextWatcher {
 
-	private TextView component = null;
+	private EditText component = null;
 
-	public ApellidoWatcher(TextView component) {
+	public ApellidoWatcher(EditText component) {
 		super();
 		this.component = component;
 	}
 
 	@Override
 	public void afterTextChanged(Editable s) {
-		String apellido = this.component.getText().toString();
+		String apellido = s.toString();
 		if (apellido.trim().isEmpty()) {
 			this.component.setError("El apellido no puede estar vacío");
 		} else if (apellido.trim().length() < 3) {

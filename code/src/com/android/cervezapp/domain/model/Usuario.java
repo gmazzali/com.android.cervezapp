@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.android.cervezapp.domain.util.SexoEnum;
+
 public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -16,6 +18,8 @@ public class Usuario implements Serializable {
 	private String nombre;
 
 	private String apellido;
+
+	private SexoEnum sexo;
 
 	private Date fechaNacimiento;
 
@@ -87,6 +91,14 @@ public class Usuario implements Serializable {
 
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
+	}
+
+	public SexoEnum getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(SexoEnum sexo) {
+		this.sexo = sexo;
 	}
 
 	public Date getFechaNacimiento() {

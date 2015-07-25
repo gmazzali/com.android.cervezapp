@@ -2,23 +2,23 @@ package com.android.cervezapp.view.watcher;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.widget.TextView;
+import android.widget.EditText;
 
 /**
  * @author Billy
  */
 public class NombreWatcher implements TextWatcher {
 
-	private TextView component = null;
+	private EditText component = null;
 
-	public NombreWatcher(TextView component) {
+	public NombreWatcher(EditText component) {
 		super();
 		this.component = component;
 	}
 
 	@Override
 	public void afterTextChanged(Editable s) {
-		String nombre = s.toString().toString();
+		String nombre = s.toString();
 		if (nombre.trim().isEmpty()) {
 			this.component.setError("El nombre no puede estar vacío");
 		} else if (nombre.trim().length() < 3) {

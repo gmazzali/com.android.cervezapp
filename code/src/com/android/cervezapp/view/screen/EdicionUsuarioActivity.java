@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.android.cervezapp.R;
@@ -21,6 +22,7 @@ import com.android.cervezapp.business.util.Constants;
 import com.android.cervezapp.domain.model.Usuario;
 import com.android.cervezapp.domain.util.RequestCodeEnum;
 import com.android.cervezapp.domain.util.ResponseCodeEnum;
+import com.android.cervezapp.domain.util.SexoEnum;
 import com.android.cervezapp.view.listener.CambiarFechaListener;
 import com.android.cervezapp.view.util.ImageHolder;
 import com.android.cervezapp.view.watcher.ApellidoWatcher;
@@ -45,6 +47,10 @@ public class EdicionUsuarioActivity extends Activity {
 
 	private EditText apellidoEditText;
 
+	private RadioButton masculinoRadioButton;
+
+	private RadioButton femeninoRadioButton;
+
 	private EditText fechaNacimientoEditText;
 
 	private Button fechaNacimientoButton;
@@ -63,14 +69,16 @@ public class EdicionUsuarioActivity extends Activity {
 		this.usuario = (Usuario) this.getIntent().getSerializableExtra(Usuario.class.getName());
 		this.usuarioNuevo = this.usuario == null;
 
-		this.fotoPerfilImageView = (ImageView) this.findViewById(R.id.fotoPerfilEdicionImageView);
 		this.userNameEditText = (EditText) this.findViewById(R.id.userNameEditText);
 		this.nombreEditText = (EditText) this.findViewById(R.id.nameEditText);
 		this.apellidoEditText = (EditText) this.findViewById(R.id.lastnameEditText);
 		this.fechaNacimientoEditText = (EditText) this.findViewById(R.id.birthdayEditText);
-		this.fechaNacimientoButton = (Button) this.findViewById(R.id.birthdayButton);
 		this.telefonoEditText = (EditText) this.findViewById(R.id.telephoneEditText);
 		this.emailEditText = (EditText) this.findViewById(R.id.emailEditText);
+		this.fotoPerfilImageView = (ImageView) this.findViewById(R.id.fotoPerfilEdicionImageView);
+		this.fechaNacimientoButton = (Button) this.findViewById(R.id.birthdayButton);
+		this.masculinoRadioButton = (RadioButton) this.findViewById(R.id.maleRadioButton);
+		this.femeninoRadioButton = (RadioButton) this.findViewById(R.id.femaleRadioButton);
 
 		this.userNameEditText.addTextChangedListener(new UserWatcher(this.userNameEditText));
 		this.nombreEditText.addTextChangedListener(new NombreWatcher(this.nombreEditText));
@@ -86,10 +94,24 @@ public class EdicionUsuarioActivity extends Activity {
 
 	private void setUsuario() {
 		if (!this.usuarioNuevo) {
-			ImageHolder.setFoto(BitmapUtility.getImage(this.usuario.getFoto()));
+			if (ImageHolder.getFoto() == null) {
+				ImageHolder.setFoto(BitmapUtility.getImage(this.usuario.getFoto()));
+			}
 			this.userNameEditText.setText(this.usuario.getUserName());
 			this.nombreEditText.setText(this.usuario.getNombre());
 			this.apellidoEditText.setText(this.usuario.getApellido());
+			switch (this.usuario.getSexo()) {
+				case MASCULINO:
+					this.masculinoRadioButton.setChecked(true);
+					break;
+
+				case FEMENINO:
+					this.femeninoRadioButton.setChecked(true);
+					break;
+
+				default:
+					break;
+			}
 			if (this.usuario.getFechaNacimiento() != null) {
 				this.fechaNacimientoEditText.setText(new SimpleDateFormat(Constants.DATE_FORMAT, Locale.getDefault()).format(this.usuario
 						.getFechaNacimiento()));
@@ -122,6 +144,11 @@ public class EdicionUsuarioActivity extends Activity {
 			this.usuario.setApellido(this.apellidoEditText.getText().toString());
 		} else {
 			throw new RuntimeException("El usuario no tiene un apellido válido");
+		}
+		if (this.masculinoRadioButton.isChecked()) {
+			this.usuario.setSexo(SexoEnum.MASCULINO);
+		} else {
+			this.usuario.setSexo(SexoEnum.FEMENINO);
 		}
 		if (!this.fechaNacimientoEditText.getText().toString().trim().isEmpty() && this.fechaNacimientoEditText.getError() == null) {
 			this.usuario.setFechaNacimiento(new SimpleDateFormat(Constants.DATE_FORMAT, Locale.getDefault()).parse(this.fechaNacimientoEditText
