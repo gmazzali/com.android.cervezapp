@@ -7,7 +7,13 @@ import java.io.Serializable;
  */
 public enum SexoEnum implements Serializable {
 
-	MASCULINO("Masculino"), FEMENINO("Femenino");
+	MASCULINO("Masculino"),
+
+	FEMENINO("Femenino"),
+
+	TRANS("Trans"),
+
+	OTROS("Otros");
 
 	private String sexo;
 

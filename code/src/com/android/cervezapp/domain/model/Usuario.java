@@ -27,6 +27,8 @@ public class Usuario implements Serializable {
 
 	private String email;
 
+	private boolean fumador;
+
 	private byte[] foto;
 
 	private List<Bar> baresFavoritos = new ArrayList<Bar>();
@@ -123,6 +125,14 @@ public class Usuario implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public boolean isFumador() {
+		return fumador;
+	}
+
+	public void setFumador(boolean fumador) {
+		this.fumador = fumador;
 	}
 
 	public byte[] getFoto() {

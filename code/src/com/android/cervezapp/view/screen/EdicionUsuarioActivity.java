@@ -11,9 +11,10 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.cervezapp.R;
@@ -23,6 +24,7 @@ import com.android.cervezapp.domain.model.Usuario;
 import com.android.cervezapp.domain.util.RequestCodeEnum;
 import com.android.cervezapp.domain.util.ResponseCodeEnum;
 import com.android.cervezapp.domain.util.SexoEnum;
+import com.android.cervezapp.view.adapter.SexoAdapter;
 import com.android.cervezapp.view.listener.CambiarFechaListener;
 import com.android.cervezapp.view.util.ImageHolder;
 import com.android.cervezapp.view.watcher.ApellidoWatcher;
@@ -47,9 +49,9 @@ public class EdicionUsuarioActivity extends Activity {
 
 	private EditText apellidoEditText;
 
-	private RadioButton masculinoRadioButton;
+	private SexoAdapter sexoAdapter;
 
-	private RadioButton femeninoRadioButton;
+	private Spinner sexoSpinner;
 
 	private EditText fechaNacimientoEditText;
 
@@ -58,6 +60,8 @@ public class EdicionUsuarioActivity extends Activity {
 	private EditText telefonoEditText;
 
 	private EditText emailEditText;
+
+	private CheckBox fumadorCheckBox;
 
 	private boolean usuarioNuevo;
 
@@ -77,8 +81,11 @@ public class EdicionUsuarioActivity extends Activity {
 		this.emailEditText = (EditText) this.findViewById(R.id.emailEditText);
 		this.fotoPerfilImageView = (ImageView) this.findViewById(R.id.fotoPerfilEdicionImageView);
 		this.fechaNacimientoButton = (Button) this.findViewById(R.id.birthdayButton);
-		this.masculinoRadioButton = (RadioButton) this.findViewById(R.id.maleRadioButton);
-		this.femeninoRadioButton = (RadioButton) this.findViewById(R.id.femaleRadioButton);
+		this.sexoSpinner = (Spinner) this.findViewById(R.id.sexoSpinner);
+		this.fumadorCheckBox = (CheckBox) this.findViewById(R.id.fumadorCheckBox);
+
+		this.sexoAdapter = new SexoAdapter(this);
+		this.sexoSpinner.setAdapter(this.sexoAdapter);
 
 		this.userNameEditText.addTextChangedListener(new UserWatcher(this.userNameEditText));
 		this.nombreEditText.addTextChangedListener(new NombreWatcher(this.nombreEditText));
@@ -100,24 +107,14 @@ public class EdicionUsuarioActivity extends Activity {
 			this.userNameEditText.setText(this.usuario.getUserName());
 			this.nombreEditText.setText(this.usuario.getNombre());
 			this.apellidoEditText.setText(this.usuario.getApellido());
-			switch (this.usuario.getSexo()) {
-				case MASCULINO:
-					this.masculinoRadioButton.setChecked(true);
-					break;
-
-				case FEMENINO:
-					this.femeninoRadioButton.setChecked(true);
-					break;
-
-				default:
-					break;
-			}
+			this.sexoSpinner.setSelection(this.sexoAdapter.getPosition(this.usuario.getSexo()));
 			if (this.usuario.getFechaNacimiento() != null) {
 				this.fechaNacimientoEditText.setText(new SimpleDateFormat(Constants.DATE_FORMAT, Locale.getDefault()).format(this.usuario
 						.getFechaNacimiento()));
 			}
 			this.telefonoEditText.setText(this.usuario.getTelefono());
 			this.emailEditText.setText(this.usuario.getEmail());
+			this.fumadorCheckBox.setChecked(this.usuario.isFumador());
 		}
 		if (ImageHolder.getFoto() != null) {
 			this.fotoPerfilImageView.setImageBitmap(ImageHolder.getFoto());
@@ -145,10 +142,10 @@ public class EdicionUsuarioActivity extends Activity {
 		} else {
 			throw new RuntimeException("El usuario no tiene un apellido válido");
 		}
-		if (this.masculinoRadioButton.isChecked()) {
-			this.usuario.setSexo(SexoEnum.MASCULINO);
+		if (this.sexoSpinner.getSelectedItem() != null) {
+			this.usuario.setSexo((SexoEnum) this.sexoSpinner.getSelectedItem());
 		} else {
-			this.usuario.setSexo(SexoEnum.FEMENINO);
+			throw new RuntimeException("El usuario no tiene un sexo seleccionado");
 		}
 		if (!this.fechaNacimientoEditText.getText().toString().trim().isEmpty() && this.fechaNacimientoEditText.getError() == null) {
 			this.usuario.setFechaNacimiento(new SimpleDateFormat(Constants.DATE_FORMAT, Locale.getDefault()).parse(this.fechaNacimientoEditText
@@ -166,6 +163,7 @@ public class EdicionUsuarioActivity extends Activity {
 		} else {
 			throw new RuntimeException("El usuario no tiene un e-mail válido");
 		}
+		this.usuario.setFumador(this.fumadorCheckBox.isChecked());
 	}
 
 	public void guardarUsuario(View v) {

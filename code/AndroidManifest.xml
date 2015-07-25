@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.android.cervezapp"
+    android:installLocation="auto"
     android:versionCode="1"
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="14"
+        android:minSdkVersion="17"
         android:targetSdkVersion="22" />
 
     <uses-permission android:name="android.permission.CAMERA" />
@@ -17,7 +18,7 @@
         android:allowBackup="true"
         android:icon="@drawable/pub"
         android:label="@string/main.activity.title"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/HoloTheme" >
         <activity
             android:name="com.android.cervezapp.view.screen.SeleccionUsuarioActivity"
             android:label="@string/seleccion.usuario.activity.title" >

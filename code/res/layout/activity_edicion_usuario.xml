@@ -49,15 +49,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:paddingTop="10dp"
-                android:text="@string/edicion.usuario.activity.label.username" />
-
             <EditText
                 android:id="@+id/userNameEditText"
                 android:layout_width="fill_parent"
@@ -67,15 +58,6 @@
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:paddingTop="10dp"
-                android:text="@string/edicion.usuario.activity.label.name" />
 
             <EditText
                 android:id="@+id/nameEditText"
@@ -87,15 +69,6 @@
                 android:paddingRight="5dp"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:paddingTop="10dp"
-                android:text="@string/edicion.usuario.activity.label.lastname" />
-
             <EditText
                 android:id="@+id/lastnameEditText"
                 android:layout_width="fill_parent"
@@ -106,43 +79,14 @@
                 android:paddingRight="5dp"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="start"
-            android:paddingTop="10dp"
-            android:text="@string/edicion.usuario.activity.label.sex" />
-
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal" >
-
-            <RadioButton
-                android:id="@+id/maleRadioButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:checked="true"
-                android:text="@string/edicion.usuario.activity.field.sex.male" />
-
-            <RadioButton
-                android:id="@+id/femaleRadioButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/edicion.usuario.activity.field.sex.female" />
-        </RadioGroup>
-
-            <TextView
+            <Spinner
+                android:id="@+id/sexoSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="start"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:paddingTop="15dp"
-                android:text="@string/edicion.usuario.activity.label.birthday" />
+                android:paddingTop="10dp"
+                android:text="@string/edicion.usuario.activity.label.sex"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -170,15 +114,6 @@
                     android:text="@string/edicion.usuario.activity.button.birthday" />
             </LinearLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:paddingTop="10dp"
-                android:text="@string/edicion.usuario.activity.label.email" />
-
             <EditText
                 android:id="@+id/emailEditText"
                 android:layout_width="fill_parent"
@@ -189,15 +124,6 @@
                 android:paddingRight="5dp"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:paddingTop="10dp"
-                android:text="@string/edicion.usuario.activity.label.telephone" />
-
             <EditText
                 android:id="@+id/telephoneEditText"
                 android:layout_width="fill_parent"
@@ -207,6 +133,21 @@
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="10dp" >
+
+                <CheckBox
+                    android:id="@+id/fumadorCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/edicion.usuario.activity.field.fumador"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
