@@ -15,14 +15,16 @@ public class BarDataBaseHelper extends SQLiteOpenHelper {
 	public static final String CAMPO_EMAIL = "email";
 	public static final String CAMPO_TELEFONO = "telefono";
 	public static final String CAMPO_FUMADOR = "fumador";
+	public static final String CAMPO_FOTO = "foto";
 	
 	private static final String DROP_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
 	private static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " (" +
 			CAMPO_ID + " integer not null primary key autoincrement," +
 			CAMPO_NOMBRE + " text not null," +
 			CAMPO_EMAIL + " text," +
-			CAMPO_TELEFONO + " text)" + 
-			CAMPO_FUMADOR + " boolean";
+			CAMPO_TELEFONO + " text, " + 
+			CAMPO_FUMADOR + " integer, " +
+			CAMPO_FOTO + "blob)";
 	
 	public BarDataBaseHelper(Context context)
 	{

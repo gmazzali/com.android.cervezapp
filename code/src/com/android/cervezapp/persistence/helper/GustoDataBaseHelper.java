@@ -19,7 +19,7 @@ public class GustoDataBaseHelper extends SQLiteOpenHelper {
 			CAMPO_ID + " integer not null primary key autoincrement," +
 			CAMPO_MARCA + " texto not null, " +
 			CAMPO_TIPO + " texto not null, " + 
-			"FOREIGN KEY (" + CAMPO_PERSONA_FK + ") REFERENCES persona (_id));";
+			"FOREIGN KEY (" + CAMPO_PERSONA_FK + ") REFERENCES persona (_id))";
 	
 	public GustoDataBaseHelper(Context context)
 	{

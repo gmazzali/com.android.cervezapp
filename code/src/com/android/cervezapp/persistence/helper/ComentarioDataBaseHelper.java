@@ -21,7 +21,7 @@ public class ComentarioDataBaseHelper extends SQLiteOpenHelper {
 			CAMPO_CALIFICACION + " integer, " +
 			CAMPO_NOTAS + " texto, " + 
 			"FOREIGN KEY (" + CAMPO_BAR_FK + ") REFERENCES bar (_id)), " +
-			"FOREIGN KEY (" + CAMPO_PERSONA_FK + ") REFERENCES persona (_id));";
+			"FOREIGN KEY (" + CAMPO_PERSONA_FK + ") REFERENCES persona (_id))";
 	
 	public ComentarioDataBaseHelper(Context context)
 	{

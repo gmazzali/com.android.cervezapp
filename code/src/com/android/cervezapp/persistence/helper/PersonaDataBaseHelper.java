@@ -18,6 +18,7 @@ public class PersonaDataBaseHelper extends SQLiteOpenHelper {
 	public static final String CAMPO_EMAIL = "email";
 	public static final String CAMPO_TELEFONO = "telefono";
 	public static final String CAMPO_FUMADOR = "fumador";
+	public static final String CAMPO_FOTO = "foto";
 	
 	private static final String DROP_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
 	private static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " (" +
@@ -28,8 +29,9 @@ public class PersonaDataBaseHelper extends SQLiteOpenHelper {
 			CAMPO_SEXO + " varchar not null," +
 			CAMPO_FECHA_NACIMIENTO + " date not null," +
 			CAMPO_EMAIL + " text," +
-			CAMPO_TELEFONO + " text)" +
-			CAMPO_FUMADOR + " boolean";
+			CAMPO_TELEFONO + " text, " +
+			CAMPO_FUMADOR + " boolean, " +
+			CAMPO_FOTO + "blob)";
 	
 	public PersonaDataBaseHelper(Context context)
 	{

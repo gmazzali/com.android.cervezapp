@@ -4,24 +4,22 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class CervezaDataBaseHelper extends SQLiteOpenHelper {
+public class GaleriaDataBaseHelper extends SQLiteOpenHelper {
 	public static final String DB_NAME = "db_cervezapp";
-	public static final String TABLE_NAME = "cerveza";
+	public static final String TABLE_NAME = "persona";
 	public static final int DB_VERSION = 1;
 	
 	public static final String CAMPO_ID = "_id";
 	public static final String CAMPO_BAR_FK = "bar_fk";
-	public static final String CAMPO_MARCA = "marca";
-	public static final String CAMPO_TIPO = "tipo";
+	public static final String CAMPO_FOTO = "foto";
 	
 	private static final String DROP_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
 	private static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " (" +
 			CAMPO_ID + " integer not null primary key autoincrement," +
-			CAMPO_MARCA + " texto not null, " +
-			CAMPO_TIPO + " texto not null, " + 
+			CAMPO_FOTO + "blob not null, " +
 			"FOREIGN KEY (" + CAMPO_BAR_FK + ") REFERENCES bar (_id))";
 	
-	public CervezaDataBaseHelper(Context context)
+	public GaleriaDataBaseHelper(Context context)
 	{
 		super(context, DB_NAME, null, DB_VERSION);
 	}
