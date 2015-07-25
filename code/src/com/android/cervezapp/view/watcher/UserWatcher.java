@@ -18,13 +18,13 @@ public class UserWatcher implements TextWatcher {
 
 	@Override
 	public void afterTextChanged(Editable s) {
-		String nombre = this.component.getText().toString();
-		if (nombre.trim().isEmpty()) {
-			this.component.setError("El nombre no puede estar vacío");
-		} else if (nombre.trim().length() < 3) {
-			this.component.setError("El nombre debe contener como mínimo 3 letras");
-		} else if (nombre.trim().length() > 60) {
-			this.component.setError("El nombre no puede contener más de 60 caracteres");
+		String user = this.component.getText().toString();
+		if (user.trim().isEmpty()) {
+			this.component.setError("El usuario no puede estar vacío");
+		} else if (user.trim().length() < 6) {
+			this.component.setError("El usuario debe contener como mínimo 6 dígitos");
+		} else if (user.trim().length() > 60) {
+			this.component.setError("El usuario no puede contener más de 60 caracteres");
 		} else {
 			this.component.setError(null);
 		}
