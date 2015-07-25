@@ -34,12 +34,12 @@
 
             <Button
                 android:id="@+id/fotoButton"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/fotoPerfilEdicionImageView"
                 android:layout_centerHorizontal="true"
                 android:layout_weight="1"
-                android:drawableLeft="@drawable/cam2_2"
+                android:drawableTop="@drawable/cam2_2"
                 android:ems="10"
                 android:onClick="ejecutarCambioDeFotoDePerfil"
                 android:text="@string/edicion.usuario.activity.boton.sacar.foto" />
