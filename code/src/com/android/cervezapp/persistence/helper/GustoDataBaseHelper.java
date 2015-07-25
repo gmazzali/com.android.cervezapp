@@ -4,27 +4,24 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class BarDataBaseHelper extends SQLiteOpenHelper {
+public class GustoDataBaseHelper extends SQLiteOpenHelper {
 	public static final String DB_NAME = "db_cervezapp";
-	public static final String TABLE_NAME = "bar";
+	public static final String TABLE_NAME = "cerveza";
 	public static final int DB_VERSION = 1;
 	
 	public static final String CAMPO_ID = "_id";
-	public static final String CAMPO_NOMBRE = "nombre";
-	public static final String CAMPO_DIRECCION = "direccion";
-	public static final String CAMPO_EMAIL = "email";
-	public static final String CAMPO_TELEFONO = "telefono";
-	public static final String CAMPO_FUMADOR = "fumador";
+	public static final String CAMPO_PERSONA_FK = "persona_fk";
+	public static final String CAMPO_MARCA = "marca";
+	public static final String CAMPO_TIPO = "tipo";
 	
 	private static final String DROP_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
 	private static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " (" +
 			CAMPO_ID + " integer not null primary key autoincrement," +
-			CAMPO_NOMBRE + " text not null," +
-			CAMPO_EMAIL + " text," +
-			CAMPO_TELEFONO + " text)" + 
-			CAMPO_FUMADOR + " boolean";
+			CAMPO_MARCA + " texto not null, " +
+			CAMPO_TIPO + " texto not null, " + 
+			"FOREIGN KEY (" + CAMPO_PERSONA_FK + ") REFERENCES persona (_id));";
 	
-	public BarDataBaseHelper(Context context)
+	public GustoDataBaseHelper(Context context)
 	{
 		super(context, DB_NAME, null, DB_VERSION);
 	}
