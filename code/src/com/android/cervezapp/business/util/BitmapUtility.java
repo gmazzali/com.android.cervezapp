@@ -10,7 +10,7 @@ import android.graphics.Matrix;
 import android.media.ExifInterface;
 
 /**
- * @author Billy
+ * @author Martin
  */
 public class BitmapUtility {
 
