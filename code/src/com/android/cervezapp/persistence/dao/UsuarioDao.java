@@ -40,5 +40,6 @@ public class UsuarioDao implements Serializable {
 	}
 
 	public void deleteUsuario(Usuario usuario) {
+		this.mapa.remove(usuario.getId());
 	}
 }

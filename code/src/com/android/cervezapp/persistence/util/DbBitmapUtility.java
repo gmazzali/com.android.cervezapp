@@ -6,6 +6,9 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 
+/**
+ * @author Billy
+ */
 public class DbBitmapUtility {
 
 	/**
