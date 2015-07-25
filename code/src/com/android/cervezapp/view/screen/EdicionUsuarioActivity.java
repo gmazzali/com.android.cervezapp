@@ -27,6 +27,7 @@ import com.android.cervezapp.view.watcher.EmailWatcher;
 import com.android.cervezapp.view.watcher.FechaWatcher;
 import com.android.cervezapp.view.watcher.NombreWatcher;
 import com.android.cervezapp.view.watcher.TelefonoWatcher;
+import com.android.cervezapp.view.watcher.UserWatcher;
 
 /**
  * @author Billy
@@ -69,7 +70,8 @@ public class EdicionUsuarioActivity extends Activity {
 		this.fechaNacimientoButton = (Button) this.findViewById(R.id.birthdayButton);
 		this.telefonoEditText = (EditText) this.findViewById(R.id.telephoneEditText);
 		this.emailEditText = (EditText) this.findViewById(R.id.emailEditText);
-
+		
+		this.userNameEditText.addTextChangedListener(new UserWatcher(this.userNameEditText));
 		this.nombreEditText.addTextChangedListener(new NombreWatcher(this.nombreEditText));
 		this.apellidoEditText.addTextChangedListener(new ApellidoWatcher(this.apellidoEditText));
 		this.fechaNacimientoEditText.addTextChangedListener(new FechaWatcher(this.fechaNacimientoEditText));
