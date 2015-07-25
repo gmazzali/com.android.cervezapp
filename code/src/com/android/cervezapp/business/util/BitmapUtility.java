@@ -9,6 +9,9 @@ import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.media.ExifInterface;
 
+/**
+ * HOLA
+ */
 public class BitmapUtility {
 
 	/**
