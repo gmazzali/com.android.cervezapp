@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class GaleriaDataBaseHelper extends SQLiteOpenHelper {
 	public static final String DB_NAME = "db_cervezapp";
-	public static final String TABLE_NAME = "persona";
+	public static final String TABLE_NAME = "galeria";
 	public static final int DB_VERSION = 1;
 	
 	public static final String CAMPO_ID = "_id";

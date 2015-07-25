@@ -4,9 +4,9 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class PersonaDataBaseHelper extends SQLiteOpenHelper {
+public class UsuarioDataBaseHelper extends SQLiteOpenHelper {
 	public static final String DB_NAME = "db_cervezapp";
-	public static final String TABLE_NAME = "persona";
+	public static final String TABLE_NAME = "usuario";
 	public static final int DB_VERSION = 1;
 	
 	public static final String CAMPO_ID = "_id";
@@ -26,14 +26,14 @@ public class PersonaDataBaseHelper extends SQLiteOpenHelper {
 			CAMPO_USER + " text not null," +
 			CAMPO_APELLIDO + " text not null," +
 			CAMPO_NOMBRE + " text not null," +
-			CAMPO_SEXO + " varchar not null," +
-			CAMPO_FECHA_NACIMIENTO + " date not null," +
+			CAMPO_SEXO + " text not null," +
+			CAMPO_FECHA_NACIMIENTO + " text not null," +
 			CAMPO_EMAIL + " text," +
 			CAMPO_TELEFONO + " text, " +
-			CAMPO_FUMADOR + " boolean, " +
-			CAMPO_FOTO + "blob)";
+			CAMPO_FUMADOR + " integer, " +
+			CAMPO_FOTO + " blob)";
 	
-	public PersonaDataBaseHelper(Context context)
+	public UsuarioDataBaseHelper(Context context)
 	{
 		super(context, DB_NAME, null, DB_VERSION);
 	}

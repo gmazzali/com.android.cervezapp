@@ -11,7 +11,7 @@ public class ComentarioDataBaseHelper extends SQLiteOpenHelper {
 	
 	public static final String CAMPO_ID = "_id";
 	public static final String CAMPO_BAR_FK = "bar_fk";
-	public static final String CAMPO_PERSONA_FK = "persona_fk";
+	public static final String CAMPO_USUARIO_FK = "persona_fk";
 	public static final String CAMPO_CALIFICACION = "calificacion";
 	public static final String CAMPO_NOTAS = "notas";
 	
@@ -21,7 +21,7 @@ public class ComentarioDataBaseHelper extends SQLiteOpenHelper {
 			CAMPO_CALIFICACION + " integer, " +
 			CAMPO_NOTAS + " texto, " + 
 			"FOREIGN KEY (" + CAMPO_BAR_FK + ") REFERENCES bar (_id)), " +
-			"FOREIGN KEY (" + CAMPO_PERSONA_FK + ") REFERENCES persona (_id))";
+			"FOREIGN KEY (" + CAMPO_USUARIO_FK + ") REFERENCES usuario (_id))";
 	
 	public ComentarioDataBaseHelper(Context context)
 	{
