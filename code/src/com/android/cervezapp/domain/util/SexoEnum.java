@@ -17,7 +17,7 @@ public enum SexoEnum implements Serializable {
 
 	private String sexo;
 
-	private SexoEnum(String sexo) {
+	SexoEnum(String sexo) {
 		this.sexo = sexo;
 	}
 
@@ -29,4 +29,10 @@ public enum SexoEnum implements Serializable {
 	public String getSexo() {
 		return sexo;
 	}
+	
+	public static SexoEnum getSexoEnum(String sexo) {
+        for(SexoEnum senum : values())
+            if(senum.getSexo().equalsIgnoreCase(sexo)) return senum;
+        throw new IllegalArgumentException();
+    }
 }

@@ -23,8 +23,8 @@ public class BitmapUtility {
 		return stream.toByteArray();
 	}
 
-	/*
-	 * Permite obtener una imagen a partir de un array de bytes.El choto!
+	/**
+	 * Permite obtener una imagen a partir de un array de bytes.
 	 */
 	public static Bitmap getImage(byte[] image) {
 		return BitmapFactory.decodeByteArray(image, 0, image.length);
