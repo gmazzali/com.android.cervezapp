@@ -121,10 +121,26 @@ public class Usuario implements Serializable {
 		return fumador;
 	}
 
+	
+	public int getFumador() {
+		if(this.fumador)
+			return 1;
+		else
+			return 0;
+	}
+	
 	public void setFumador(boolean fumador) {
 		this.fumador = fumador;
 	}
 
+	public void setFumador(int fumador) {
+		if(fumador == 1)
+			this.fumador = true;
+		else
+			if(fumador == 0)
+				this.fumador = false;
+	}
+	
 	public byte[] getFoto() {
 		return foto;
 	}

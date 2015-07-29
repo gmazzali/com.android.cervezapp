@@ -22,7 +22,7 @@ public class UsuarioDataBaseAdapter {
 	private UsuarioDataBaseHelper dbHelper;
 	private SQLiteDatabase db;
 	private DateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
-	
+
 	public UsuarioDataBaseAdapter(Context context) {
 		this.context = context;
 	}
@@ -42,7 +42,7 @@ public class UsuarioDataBaseAdapter {
 
 	public long agregar(Usuario usuario) {
 		ContentValues valores = new ContentValues();
-		//DateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
+		// DateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
 
 		valores.put(UsuarioDataBaseHelper.CAMPO_USER, usuario.getUserName());
 		valores.put(UsuarioDataBaseHelper.CAMPO_APELLIDO, usuario.getApellido());
@@ -53,10 +53,7 @@ public class UsuarioDataBaseAdapter {
 				fecha.format(usuario.getFechaNacimiento()));
 		valores.put(UsuarioDataBaseHelper.CAMPO_EMAIL, usuario.getEmail());
 		valores.put(UsuarioDataBaseHelper.CAMPO_TELEFONO, usuario.getTelefono());
-		if (usuario.isFumador())
-			valores.put(UsuarioDataBaseHelper.CAMPO_FUMADOR, 1);
-		else
-			valores.put(UsuarioDataBaseHelper.CAMPO_FUMADOR, 0);
+		valores.put(UsuarioDataBaseHelper.CAMPO_FUMADOR, usuario.getFumador());
 
 		/**
 		 * FALTA EL MÉTODO PARA INGRESAR LA FOTO..¿QUÉ FOTO?..JEJEJE
@@ -68,7 +65,7 @@ public class UsuarioDataBaseAdapter {
 	public void modificar(Usuario usuario) {
 		String[] argumentos = new String[] { String.valueOf(usuario.getId()) };
 		ContentValues valores = new ContentValues();
-		//DateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
+		// DateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
 
 		valores.put(UsuarioDataBaseHelper.CAMPO_USER, usuario.getUserName());
 		valores.put(UsuarioDataBaseHelper.CAMPO_APELLIDO, usuario.getApellido());
@@ -79,6 +76,7 @@ public class UsuarioDataBaseAdapter {
 				fecha.format(usuario.getFechaNacimiento()));
 		valores.put(UsuarioDataBaseHelper.CAMPO_EMAIL, usuario.getEmail());
 		valores.put(UsuarioDataBaseHelper.CAMPO_TELEFONO, usuario.getTelefono());
+		valores.put(UsuarioDataBaseHelper.CAMPO_FUMADOR, usuario.getFumador());
 
 		db.update(UsuarioDataBaseHelper.TABLE_NAME, valores,
 				UsuarioDataBaseHelper.CAMPO_ID + " = ?", argumentos);
@@ -115,7 +113,7 @@ public class UsuarioDataBaseAdapter {
 
 	public Usuario buscar(int id) throws ParseException {
 		Usuario usuario = null;
-		
+
 		String[] campos = { UsuarioDataBaseHelper.CAMPO_ID,
 				UsuarioDataBaseHelper.CAMPO_USER,
 				UsuarioDataBaseHelper.CAMPO_APELLIDO,
@@ -135,7 +133,7 @@ public class UsuarioDataBaseAdapter {
 
 		if (resultado != null) {
 			resultado.moveToFirst();
-						
+
 			usuario = new Usuario();
 			usuario.setId((long) resultado.getInt(resultado
 					.getColumnIndex(UsuarioDataBaseHelper.CAMPO_ID)));
@@ -143,13 +141,18 @@ public class UsuarioDataBaseAdapter {
 					.getColumnIndex(UsuarioDataBaseHelper.CAMPO_APELLIDO)));
 			usuario.setNombre(resultado.getString(resultado
 					.getColumnIndex(UsuarioDataBaseHelper.CAMPO_NOMBRE)));
-			usuario.setSexo(SexoEnum.getSexoEnum(resultado.getString(resultado.getColumnIndex(UsuarioDataBaseHelper.CAMPO_SEXO))));
+			usuario.setSexo(SexoEnum.getSexoEnum(resultado.getString(resultado
+					.getColumnIndex(UsuarioDataBaseHelper.CAMPO_SEXO))));
 			usuario.setFechaNacimiento(fecha.parse(resultado.getString(resultado
 					.getColumnIndex(UsuarioDataBaseHelper.CAMPO_FECHA_NACIMIENTO))));
 			usuario.setEmail(resultado.getString(resultado
 					.getColumnIndex(UsuarioDataBaseHelper.CAMPO_EMAIL)));
 			usuario.setTelefono(resultado.getString(resultado
 					.getColumnIndex(UsuarioDataBaseHelper.CAMPO_TELEFONO)));
+			usuario.setFumador(resultado.getInt(resultado
+					.getColumnIndex(UsuarioDataBaseHelper.CAMPO_FUMADOR)));
+			usuario.setFoto(resultado.getBlob(resultado
+					.getColumnIndex(UsuarioDataBaseHelper.CAMPO_FOTO)));
 		}
 
 		return usuario;
