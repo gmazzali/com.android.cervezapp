@@ -26,6 +26,26 @@
             android:contentDescription="@string/main.activity.foto.perfil.content"
             android:scaleType="fitCenter"
             android:src="@drawable/leprechaun_drunk_icon" />
+
+        <Button
+            android:id="@+id/buscarBaresButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/search"
+            android:ems="10"
+            android:text="@string/main.activity.boton.buscar.bares" />
+
+        <Button
+            android:id="@+id/baresButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/beer_clink"
+            android:ems="10"
+            android:text="@string/main.activity.boton.bares" />
     </LinearLayout>
 
     <LinearLayout
@@ -37,26 +57,6 @@
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
         android:orientation="horizontal" >
-
-        <Button
-            android:id="@+id/baresButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_weight="1"
-            android:drawableTop="@drawable/beer_clink"
-            android:ems="10"
-            android:text="@string/main.activity.boton.bares" />
-
-        <Button
-            android:id="@+id/buscarBaresButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_weight="1"
-            android:drawableTop="@drawable/search"
-            android:ems="10"
-            android:text="@string/main.activity.boton.buscar.bares" />
     </LinearLayout>
 
 </RelativeLayout>
