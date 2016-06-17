@@ -42,6 +42,13 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.android.cervezapp.view.screen.VisualizarComentariosActivity"
+            android:label="@string/visualizar.comentarios.activity.title" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

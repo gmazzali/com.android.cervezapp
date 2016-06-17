@@ -15,7 +15,11 @@ public enum ResponseCodeEnum {
 
 	ACEPTAR_MODIFICAR_USUARIO(1002),
 
-	CANCELAR_MODIFICAR_USUARIO(0);
+	CANCELAR_MODIFICAR_USUARIO(0),
+	
+	ACEPTAR_AGREGAR_COMENTARIO(1003),
+
+	CANCELAR_AGREGAR_COMENTARIO(0);
 
 	public static ResponseCodeEnum get(RequestCodeEnum requestCode, int code) {
 		if (requestCode != null) {
@@ -38,6 +42,8 @@ public enum ResponseCodeEnum {
 					return new ResponseCodeEnum[] { ACEPTAR_AGREGAR_NUEVO_USUARIO, CANCELAR_AGREDAR_NUEVO_USUARIO };
 				case MODIFICAR_USUARIO:
 					return new ResponseCodeEnum[] { ACEPTAR_MODIFICAR_USUARIO, CANCELAR_MODIFICAR_USUARIO };
+				case AGREGAR_COMENTARIO:
+					return new ResponseCodeEnum[] { ACEPTAR_AGREGAR_COMENTARIO, CANCELAR_AGREGAR_COMENTARIO };					
 			}
 		}
 		return new ResponseCodeEnum[] {};

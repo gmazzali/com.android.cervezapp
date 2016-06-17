@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.android.cervezapp.view.screen.VisualizarComentariosActivity" >
+
+    <ListView
+        android:id="@+id/comentarioListView"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"/>
+
+    <LinearLayout
+        android:id="@+id/botonesIngresoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/usuarioListView"
+        android:orientation="vertical" >
+
+<!--         <LinearLayout -->
+<!--             android:layout_width="wrap_content" -->
+<!--             android:layout_height="match_parent" -->
+<!--             android:orientation="horizontal" > -->
+
+<!--             <Button -->
+<!--                 android:id="@+id/agregarUsuarioButton" -->
+<!--                 android:layout_width="match_parent" -->
+<!--                 android:layout_height="wrap_content" -->
+<!--                 android:layout_marginTop="10dp" -->
+<!--                 android:layout_weight="1" -->
+<!--                 android:onClick="agregarUsuario" -->
+<!--                 android:text="@string/seleccion.usuario.activity.button.add" /> -->
+
+<!--             <Button -->
+<!--                 android:id="@+id/editarUsuarioButton" -->
+<!--                 android:layout_width="match_parent" -->
+<!--                 android:layout_height="wrap_content" -->
+<!--                 android:layout_alignParentBottom="true" -->
+<!--                 android:layout_marginTop="10dp" -->
+<!--                 android:layout_weight="1" -->
+<!--                 android:onClick="modificarUsuario" -->
+<!--                 android:text="@string/seleccion.usuario.activity.button.modify" /> -->
+<!--         </LinearLayout> -->
+
+        <Button
+            android:id="@+id/agregarComentarioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_weight="1"
+            android:onClick="agregarComentario"
+            android:text="@string/visualizar.comentarios.activity.button.add" />
+    </LinearLayout>
+
+</RelativeLayout>

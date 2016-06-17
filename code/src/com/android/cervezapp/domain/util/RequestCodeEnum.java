@@ -10,7 +10,9 @@ public enum RequestCodeEnum {
 	
 	AGREGAR_USUARIO(101), 
 	
-	MODIFICAR_USUARIO(102);
+	MODIFICAR_USUARIO(102),
+	
+	AGREGAR_COMENTARIO(103);
 
 	public static RequestCodeEnum get(int code) {
 		for (RequestCodeEnum request : values()) {

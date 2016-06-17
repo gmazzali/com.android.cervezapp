@@ -33,6 +33,8 @@
     <string name="edicion.usuario.activity.label.fumador">Fumador?</string>
     <string name="edicion.usuario.activity.field.fumador">Fumador?</string>
     <string name="edicion.usuario.activity.button.accept">Guardar</string>
-    <string name="edicion.usuario.activity.button.cancel">Cancelar</string>
+    <string name="edicion.usuario.activity.button.cancel">Cancelar</string>    
+    <string name="visualizar.comentarios.activity.button.add">Agregar comentario</string>    
+    <string name="visualizar.comentarios.activity.title">Comentarios</string>
 
 </resources>

@@ -45,6 +45,7 @@
             android:layout_weight="1"
             android:drawableTop="@drawable/beer_clink"
             android:ems="10"
+            android:onClick="listarComentarios"
             android:text="@string/main.activity.boton.bares" />
     </LinearLayout>
 

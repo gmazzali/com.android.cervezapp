@@ -1,14 +1,19 @@
 package com.android.cervezapp.view.screen;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.android.cervezapp.R;
 import com.android.cervezapp.business.util.BitmapUtility;
+import com.android.cervezapp.domain.model.Comentario;
 import com.android.cervezapp.domain.model.Usuario;
+import com.android.cervezapp.domain.util.RequestCodeEnum;
 
 public class MainActivity extends Activity {
 
@@ -40,5 +45,11 @@ public class MainActivity extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	public void listarComentarios(View view) {
+		Toast.makeText(this, "Nai trolazo", Toast.LENGTH_SHORT).show();
+		Intent intent = new Intent(this, VisualizarComentariosActivity.class);
+		this.startActivityForResult(intent, RequestCodeEnum.AGREGAR_COMENTARIO.getRequest());
 	}
 }
