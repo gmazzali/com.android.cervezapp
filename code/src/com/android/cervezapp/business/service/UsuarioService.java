@@ -3,10 +3,12 @@ package com.android.cervezapp.business.service;
 import java.io.Serializable;
 import java.util.List;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 
 import com.android.cervezapp.business.util.BitmapUtility;
 import com.android.cervezapp.domain.model.Usuario;
+import com.android.cervezapp.persistence.adapter.UsuarioDataBaseAdapter;
 import com.android.cervezapp.persistence.dao.UsuarioDao;
 import com.android.cervezapp.persistence.util.IdGenerator;
 
@@ -16,18 +18,29 @@ import com.android.cervezapp.persistence.util.IdGenerator;
 public class UsuarioService implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
-	private static UsuarioService instance = new UsuarioService();
-
-	public static UsuarioService getInstance() {
-		return UsuarioService.instance;
-	}
-
-	private UsuarioDao usuarioDao = UsuarioDao.getInstance();
+	private Context context;
+	private static UsuarioService instance;
+	private UsuarioDao usuarioDao = UsuarioDao.getInstance(this.context);
 
 	private UsuarioService() {
 	}
 
+	private UsuarioService(Context context) {
+		this.context = context;
+	}
+	
+	public static UsuarioService getInstance() {
+		return UsuarioService.instance;
+	}
+	
+	public static UsuarioService getInstance(Context context) {
+		if ( instance == null ) {
+			instance = new UsuarioService(context);
+		}
+		return null;
+	}
+	
+	
 	/**
 	 * Se llama al inicio de la aplicación.
 	 */
@@ -65,4 +78,5 @@ public class UsuarioService implements Serializable {
 	public void deleteUsuario(Usuario usuario) {
 		this.usuarioDao.deleteUsuario(usuario);
 	}
+	
 }

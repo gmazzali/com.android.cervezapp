@@ -22,15 +22,24 @@ public class UsuarioDataBaseAdapter {
 	private UsuarioDataBaseHelper dbHelper;
 	private SQLiteDatabase db;
 	private DateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
-
+	private static UsuarioDataBaseAdapter instance;
+	
+	
 	public UsuarioDataBaseAdapter(Context context) {
 		this.context = context;
 	}
-
+	
+	public static UsuarioDataBaseAdapter getInstance(Context context) {
+		if ( instance == null ) {
+			instance = new UsuarioDataBaseAdapter(context);
+		}
+		return instance;
+	}
+	
 	public UsuarioDataBaseAdapter abrir() throws SQLiteException {
 		dbHelper = new UsuarioDataBaseHelper(context);
 		db = dbHelper.getWritableDatabase();
-
+		
 		return this;
 	}
 

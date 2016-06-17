@@ -23,12 +23,9 @@ import com.android.cervezapp.view.adapter.UsuarioAdapter;
  */
 public class SeleccionUsuarioActivity extends Activity {
 
-	private UsuarioService usuarioService = UsuarioService.getInstance();
-
+	private UsuarioService usuarioService = UsuarioService.getInstance(this);
 	private ListView usuariosListView;
-
 	private UsuarioAdapter usuarioAdapter;
-
 	private int posicionSeleccionada;
 
 	@Override
