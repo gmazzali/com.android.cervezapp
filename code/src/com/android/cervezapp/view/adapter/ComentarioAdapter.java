@@ -14,7 +14,6 @@ import android.widget.TextView;
 import com.android.cervezapp.R;
 import com.android.cervezapp.business.util.BitmapUtility;
 import com.android.cervezapp.domain.model.Comentario;
-import com.android.cervezapp.domain.model.Usuario;
 
 /**
  * @author John

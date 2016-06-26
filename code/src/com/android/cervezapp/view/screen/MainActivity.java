@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import com.android.cervezapp.R;
 import com.android.cervezapp.business.util.BitmapUtility;
-import com.android.cervezapp.domain.model.Comentario;
 import com.android.cervezapp.domain.model.Usuario;
 import com.android.cervezapp.domain.util.RequestCodeEnum;
 
@@ -46,7 +45,7 @@ public class MainActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
+
 	public void listarComentarios(View view) {
 		Toast.makeText(this, "Nai trolazo", Toast.LENGTH_SHORT).show();
 		Intent intent = new Intent(this, VisualizarComentariosActivity.class);

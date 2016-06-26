@@ -23,7 +23,6 @@ public class IdGenerator implements Serializable {
 		}
 		id++;
 		IdGenerator.idMap.put(clazz, id);
-		
 		return id;
 	}
 }

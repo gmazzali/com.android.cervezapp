@@ -2,8 +2,6 @@ package com.android.cervezapp.domain.model;
 
 import java.io.Serializable;
 
-import android.graphics.Bitmap;
-
 public class Bar implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -12,7 +10,19 @@ public class Bar implements Serializable {
 
 	private String nombre;
 
-	private Bitmap foto;
+	private String direccion;
+
+	private String email;
+
+	private String telefono;
+
+	private Boolean fumador;
+
+	private byte[] foto;
+
+	private String latitud;
+
+	private String longitud;
 
 	@Override
 	public int hashCode() {
@@ -55,11 +65,59 @@ public class Bar implements Serializable {
 		this.nombre = nombre;
 	}
 
-	public Bitmap getFoto() {
+	public String getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+	public Boolean getFumador() {
+		return fumador;
+	}
+
+	public void setFumador(Boolean fumador) {
+		this.fumador = fumador;
+	}
+
+	public byte[] getFoto() {
 		return foto;
 	}
 
-	public void setFoto(Bitmap foto) {
+	public void setFoto(byte[] foto) {
 		this.foto = foto;
+	}
+
+	public String getLatitud() {
+		return latitud;
+	}
+
+	public void setLatitud(String latitud) {
+		this.latitud = latitud;
+	}
+
+	public String getLongitud() {
+		return longitud;
+	}
+
+	public void setLongitud(String longitud) {
+		this.longitud = longitud;
 	}
 }
