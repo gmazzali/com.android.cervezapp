@@ -7,9 +7,6 @@ import android.content.Context;
 import com.android.cervezapp.domain.model.Usuario;
 import com.android.cervezapp.persistence.adapter.UsuarioDataBaseAdapter;
 
-/**
- * @author Billy
- */
 public class UsuarioDao implements Serializable {
 
 	private static final long serialVersionUID = 1L;
