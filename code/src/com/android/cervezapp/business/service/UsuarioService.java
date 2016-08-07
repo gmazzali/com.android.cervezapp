@@ -1,6 +1,7 @@
 package com.android.cervezapp.business.service;
 
 import java.io.Serializable;
+import java.text.ParseException;
 import java.util.List;
 
 import android.content.Context;
@@ -8,34 +9,20 @@ import android.graphics.Bitmap;
 
 import com.android.cervezapp.business.util.BitmapUtility;
 import com.android.cervezapp.domain.model.Usuario;
-import com.android.cervezapp.persistence.adapter.UsuarioDataBaseAdapter;
 import com.android.cervezapp.persistence.dao.UsuarioDao;
 import com.android.cervezapp.persistence.util.IdGenerator;
 
-/**
- * @author Billy
- */
 public class UsuarioService implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private Context context;
+	//private Context context;
 	private static UsuarioService instance;
-	private UsuarioDao usuarioDao = UsuarioDao.getInstance(this.context);
+	private UsuarioDao usuarioDao;
 
-	private UsuarioService() {
-	}
-
-	private UsuarioService(Context context) {
-		this.context = context;
-	}
-	
-	public static UsuarioService getInstance() {
-		return UsuarioService.instance;
-	}
-	
 	public static UsuarioService getInstance(Context context) {
 		if ( instance == null ) {
-			instance = new UsuarioService(context);
+			instance = new UsuarioService();
+			instance.usuarioDao = UsuarioDao.getInstance(context);
 		}
 		return null;
 	}
@@ -43,8 +30,9 @@ public class UsuarioService implements Serializable {
 	
 	/**
 	 * Se llama al inicio de la aplicación.
+	 * @throws ParseException 
 	 */
-	public Usuario setUpUsuario(Long idUsuario, Bitmap fotoDefault) {
+	public Usuario setUpUsuario(Long idUsuario, Bitmap fotoDefault) throws ParseException {
 		Usuario usuario = this.usuarioDao.getById(idUsuario);
 		if (usuario == null) {
 			usuario = new Usuario();
@@ -58,11 +46,11 @@ public class UsuarioService implements Serializable {
 		return usuario;
 	}
 
-	public List<Usuario> getAllUsuarios() {
+	public List<Usuario> getAllUsuarios() throws ParseException {
 		return this.usuarioDao.getAllUsuarios();
 	}
 
-	public Usuario getById(Long id) {
+	public Usuario getById(Long id) throws ParseException {
 		return this.usuarioDao.getById(id);
 	}
 

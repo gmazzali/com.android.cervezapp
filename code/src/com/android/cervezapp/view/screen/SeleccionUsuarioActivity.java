@@ -1,5 +1,7 @@
 package com.android.cervezapp.view.screen;
 
+import java.text.ParseException;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -34,7 +36,12 @@ public class SeleccionUsuarioActivity extends Activity {
 		this.setContentView(R.layout.activity_seleccion_usuario);
 
 		this.usuarioAdapter = new UsuarioAdapter(this);
-		this.usuarioAdapter.addAll(this.usuarioService.getAllUsuarios());
+		try {
+			this.usuarioAdapter.addAll(this.usuarioService.getAllUsuarios());
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		this.usuariosListView = (ListView) this.findViewById(R.id.usuarioListView);
 		this.usuariosListView.setAdapter(this.usuarioAdapter);

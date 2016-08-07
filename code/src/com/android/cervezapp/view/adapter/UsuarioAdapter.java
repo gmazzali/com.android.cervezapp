@@ -14,9 +14,6 @@ import com.android.cervezapp.R;
 import com.android.cervezapp.business.util.BitmapUtility;
 import com.android.cervezapp.domain.model.Usuario;
 
-/**
- * @author Billy
- */
 public class UsuarioAdapter extends ArrayAdapter<Usuario> {
 
 	public UsuarioAdapter(Context context) {

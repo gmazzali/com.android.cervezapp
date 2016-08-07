@@ -3,11 +3,11 @@ package com.android.cervezapp.persistence.adapter;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-
+import java.util.ArrayList;
+import java.util.List;
 import com.android.cervezapp.persistence.helper.UsuarioDataBaseHelper;
 import com.android.cervezapp.domain.model.Usuario;
 import com.android.cervezapp.domain.util.SexoEnum;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -18,10 +18,15 @@ import android.database.sqlite.SQLiteException;
  * @author Martin
  */
 public class UsuarioDataBaseAdapter {
+	
 	private Context context;
+	
 	private UsuarioDataBaseHelper dbHelper;
+	
 	private SQLiteDatabase db;
+	
 	private DateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
+	
 	private static UsuarioDataBaseAdapter instance;
 	
 	
@@ -37,9 +42,8 @@ public class UsuarioDataBaseAdapter {
 	}
 	
 	public UsuarioDataBaseAdapter abrir() throws SQLiteException {
-		dbHelper = new UsuarioDataBaseHelper(context);
+		dbHelper = new UsuarioDataBaseHelper(this.context);
 		db = dbHelper.getWritableDatabase();
-		
 		return this;
 	}
 
@@ -49,9 +53,30 @@ public class UsuarioDataBaseAdapter {
 		}
 	}
 
+	public void limpiar() {
+		db.delete(UsuarioDataBaseHelper.TABLE_NAME, null, null);
+	}
+
+	public void beginTransaction() {
+		if (db != null) {
+			db.beginTransaction();
+		}
+	}
+
+	public void flush() {
+		if (db != null) {
+			db.setTransactionSuccessful();
+		}
+	}
+
+	public void commit() {
+		if (db != null) {
+			db.endTransaction();
+		}
+	}
+	
 	public long agregar(Usuario usuario) {
 		ContentValues valores = new ContentValues();
-		// DateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
 
 		valores.put(UsuarioDataBaseHelper.CAMPO_USER, usuario.getUserName());
 		valores.put(UsuarioDataBaseHelper.CAMPO_APELLIDO, usuario.getApellido());
@@ -74,7 +99,6 @@ public class UsuarioDataBaseAdapter {
 	public void modificar(Usuario usuario) {
 		String[] argumentos = new String[] { String.valueOf(usuario.getId()) };
 		ContentValues valores = new ContentValues();
-		// DateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
 
 		valores.put(UsuarioDataBaseHelper.CAMPO_USER, usuario.getUserName());
 		valores.put(UsuarioDataBaseHelper.CAMPO_APELLIDO, usuario.getApellido());
@@ -98,7 +122,7 @@ public class UsuarioDataBaseAdapter {
 				UsuarioDataBaseHelper.CAMPO_ID + " = ?", argumentos);
 	}
 
-	public Cursor obtenerTodos() {
+	public List<Usuario> obtenerTodos() throws ParseException {
 		String[] campos = { UsuarioDataBaseHelper.CAMPO_ID,
 				UsuarioDataBaseHelper.CAMPO_USER,
 				UsuarioDataBaseHelper.CAMPO_APELLIDO,
@@ -112,15 +136,31 @@ public class UsuarioDataBaseAdapter {
 
 		Cursor resultado = db.query(UsuarioDataBaseHelper.TABLE_NAME, campos,
 				null, null, null, null, null);
-
+		
+		List<Usuario> usuarios = new ArrayList<Usuario>();
+		
+		
 		if (resultado != null) {
 			resultado.moveToFirst();
+			while(resultado.moveToNext()){
+				Usuario usuario = new Usuario();
+				
+				usuario.setId((long) resultado.getInt(resultado.getColumnIndex(UsuarioDataBaseHelper.CAMPO_ID)));
+				usuario.setUserName(resultado.getString(resultado.getColumnIndex(UsuarioDataBaseHelper.CAMPO_USER)));
+				usuario.setNombre(resultado.getString(resultado.getColumnIndex(UsuarioDataBaseHelper.CAMPO_NOMBRE)));
+				usuario.setApellido(resultado.getString(resultado.getColumnIndex(UsuarioDataBaseHelper.CAMPO_APELLIDO)));
+				usuario.setSexo(SexoEnum.getSexoEnum(resultado.getString(resultado.getColumnIndex(UsuarioDataBaseHelper.CAMPO_SEXO))));
+				usuario.setFechaNacimiento(fecha.parse(resultado.getString(resultado.getColumnIndex(UsuarioDataBaseHelper.CAMPO_FECHA_NACIMIENTO))));
+				usuario.setTelefono(resultado.getString(resultado.getColumnIndex(UsuarioDataBaseHelper.CAMPO_TELEFONO)));
+				usuario.setFumador(resultado.getInt(resultado.getColumnIndex(UsuarioDataBaseHelper.CAMPO_FUMADOR)));
+				usuario.setFoto(resultado.getBlob(resultado.getColumnIndex(UsuarioDataBaseHelper.CAMPO_FOTO)));
+				usuarios.add(usuario);
+			}
 		}
-
-		return resultado;
+		return usuarios;
 	}
 
-	public Usuario buscar(int id) throws ParseException {
+	public Usuario buscar(Long id) throws ParseException {
 		Usuario usuario = null;
 
 		String[] campos = { UsuarioDataBaseHelper.CAMPO_ID,
@@ -165,27 +205,5 @@ public class UsuarioDataBaseAdapter {
 		}
 
 		return usuario;
-	}
-
-	public void limpiar() {
-		db.delete(UsuarioDataBaseHelper.TABLE_NAME, null, null);
-	}
-
-	public void beginTransaction() {
-		if (db != null) {
-			db.beginTransaction();
-		}
-	}
-
-	public void flush() {
-		if (db != null) {
-			db.setTransactionSuccessful();
-		}
-	}
-
-	public void commit() {
-		if (db != null) {
-			db.endTransaction();
-		}
 	}
 }
