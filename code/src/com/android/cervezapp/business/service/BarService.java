@@ -25,6 +25,9 @@ public class BarService implements Serializable {
 		return instance;
 	}
 
+	private BarService() {
+	}
+
 	public List<Bar> getAllBares() {
 		return this.barDao.getAllBares();
 	}

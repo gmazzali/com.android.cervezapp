@@ -2,6 +2,7 @@ package com.android.cervezapp.business.service;
 
 import java.io.Serializable;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
@@ -15,43 +16,54 @@ import com.android.cervezapp.persistence.util.IdGenerator;
 public class UsuarioService implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	//private Context context;
+	// private Context context;
 	private static UsuarioService instance;
 	private UsuarioDao usuarioDao;
 
 	public static UsuarioService getInstance(Context context) {
-		if ( instance == null ) {
+		if (instance == null) {
 			instance = new UsuarioService();
 			instance.usuarioDao = UsuarioDao.getInstance(context);
 		}
 		return null;
 	}
-	
-	
-	/**
-	 * Se llama al inicio de la aplicación.
-	 * @throws ParseException 
-	 */
-	public Usuario setUpUsuario(Long idUsuario, Bitmap fotoDefault) throws ParseException {
-		Usuario usuario = this.usuarioDao.getById(idUsuario);
-		if (usuario == null) {
-			usuario = new Usuario();
-			usuario.setId(idUsuario);
-			usuario.setNombre(null);
-			usuario.setApellido(null);
-			usuario.setEmail(null);
-			usuario.setFoto(BitmapUtility.getBytes(fotoDefault));
-			this.usuarioDao.saveUsuario(usuario);
+
+	public Usuario setUpUsuario(Long idUsuario, Bitmap fotoDefault) {
+		Usuario usuario;
+		try {
+			usuario = this.usuarioDao.getById(idUsuario);
+			if (usuario == null) {
+				usuario = new Usuario();
+				usuario.setId(idUsuario);
+				usuario.setNombre(null);
+				usuario.setApellido(null);
+				usuario.setEmail(null);
+				usuario.setFoto(BitmapUtility.getBytes(fotoDefault));
+				this.usuarioDao.saveUsuario(usuario);
+			}
+			return usuario;
+		} catch (ParseException e) {
+			e.printStackTrace();
 		}
-		return usuario;
+		return null;
 	}
 
-	public List<Usuario> getAllUsuarios() throws ParseException {
-		return this.usuarioDao.getAllUsuarios();
+	public List<Usuario> getAllUsuarios() {
+		try {
+			return this.usuarioDao.getAllUsuarios();
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return new ArrayList<Usuario>();
 	}
 
-	public Usuario getById(Long id) throws ParseException {
-		return this.usuarioDao.getById(id);
+	public Usuario getById(Long id) {
+		try {
+			return this.usuarioDao.getById(id);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public void saveUsuario(Usuario usuario) {
@@ -66,5 +78,4 @@ public class UsuarioService implements Serializable {
 	public void deleteUsuario(Usuario usuario) {
 		this.usuarioDao.deleteUsuario(usuario);
 	}
-	
 }

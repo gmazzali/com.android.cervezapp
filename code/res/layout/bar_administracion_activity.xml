@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.android.cervezapp.view.screen.SeleccionUsuarioActivity" >
+
+    <ListView
+        android:id="@+id/baresListView"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"/>
+
+    <LinearLayout
+        android:id="@+id/botonesAdministrarBaresLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/baresListView"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/agregarBarButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:onClick="agregarBar"
+                android:text="@string/administracion.bar.activity.button.add" />
+
+            <Button
+                android:id="@+id/editarBarButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:onClick="modificarBar"
+                android:text="@string/administracion.bar.activity.button.modify" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/eliminarBarButton"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_alignParentBottom="true"
+            android:layout_weight="1"
+            android:onClick="eliminarBar"
+            android:text="@string/administracion.bar.activity.button.delete" />
+    </LinearLayout>
+
+</RelativeLayout>

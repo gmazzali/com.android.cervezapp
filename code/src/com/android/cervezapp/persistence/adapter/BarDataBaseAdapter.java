@@ -29,7 +29,7 @@ public class BarDataBaseAdapter {
 		return instance;
 	}
 
-	public BarDataBaseAdapter(Context context) {
+	private BarDataBaseAdapter(Context context) {
 		this.context = context;
 	}
 

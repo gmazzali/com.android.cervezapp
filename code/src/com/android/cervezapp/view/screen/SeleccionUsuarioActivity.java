@@ -1,7 +1,5 @@
 package com.android.cervezapp.view.screen;
 
-import java.text.ParseException;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,16 +16,14 @@ import com.android.cervezapp.domain.util.RequestCodeEnum;
 import com.android.cervezapp.domain.util.ResponseCodeEnum;
 import com.android.cervezapp.view.adapter.UsuarioAdapter;
 
-/**
- * Ventana de selección de usuario de inicio.
- * 
- * @author Billy
- */
 public class SeleccionUsuarioActivity extends Activity {
 
 	private UsuarioService usuarioService = UsuarioService.getInstance(this);
+
 	private ListView usuariosListView;
+
 	private UsuarioAdapter usuarioAdapter;
+
 	private int posicionSeleccionada;
 
 	@Override
@@ -36,12 +32,7 @@ public class SeleccionUsuarioActivity extends Activity {
 		this.setContentView(R.layout.activity_seleccion_usuario);
 
 		this.usuarioAdapter = new UsuarioAdapter(this);
-		try {
-			this.usuarioAdapter.addAll(this.usuarioService.getAllUsuarios());
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		this.usuarioAdapter.addAll(this.usuarioService.getAllUsuarios());
 
 		this.usuariosListView = (ListView) this.findViewById(R.id.usuarioListView);
 		this.usuariosListView.setAdapter(this.usuarioAdapter);
@@ -96,29 +87,29 @@ public class SeleccionUsuarioActivity extends Activity {
 
 		if (request != null && response != null) {
 			switch (response) {
-				case ACEPTAR_AGREGAR_NUEVO_USUARIO:
-					usuario = (Usuario) data.getExtras().getSerializable(Usuario.class.getName());
-					this.usuarioAdapter.add(usuario);
-					this.usuarioService.saveUsuario(usuario);
-					break;
+			case ACEPTAR_AGREGAR_NUEVO_USUARIO:
+				usuario = (Usuario) data.getExtras().getSerializable(Usuario.class.getName());
+				this.usuarioAdapter.add(usuario);
+				this.usuarioService.saveUsuario(usuario);
+				break;
 
-				case CANCELAR_AGREDAR_NUEVO_USUARIO:
-					Toast.makeText(this, "Se cancelo el alta del usuario", Toast.LENGTH_SHORT).show();
-					break;
+			case CANCELAR_AGREDAR_NUEVO_USUARIO:
+				Toast.makeText(this, "Se cancelo el alta del usuario", Toast.LENGTH_SHORT).show();
+				break;
 
-				case ACEPTAR_MODIFICAR_USUARIO:
-					usuario = (Usuario) data.getExtras().getSerializable(Usuario.class.getName());
-					this.usuarioAdapter.remove(usuario);
-					this.usuarioAdapter.add(usuario);
-					this.usuarioService.updateUsuario(usuario);
-					break;
+			case ACEPTAR_MODIFICAR_USUARIO:
+				usuario = (Usuario) data.getExtras().getSerializable(Usuario.class.getName());
+				this.usuarioAdapter.remove(usuario);
+				this.usuarioAdapter.add(usuario);
+				this.usuarioService.updateUsuario(usuario);
+				break;
 
-				case CANCELAR_MODIFICAR_USUARIO:
-					Toast.makeText(this, "Se cancelo la modificación del usuario", Toast.LENGTH_SHORT).show();
-					break;
+			case CANCELAR_MODIFICAR_USUARIO:
+				Toast.makeText(this, "Se cancelo la modificación del usuario", Toast.LENGTH_SHORT).show();
+				break;
 
-				default:
-					break;
+			default:
+				break;
 			}
 		} else {
 			Toast.makeText(this, "Problemas desconocido", Toast.LENGTH_SHORT).show();

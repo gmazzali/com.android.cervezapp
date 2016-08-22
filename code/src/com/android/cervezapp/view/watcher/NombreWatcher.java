@@ -4,9 +4,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
 
-/**
- * @author Billy
- */
 public class NombreWatcher implements TextWatcher {
 
 	private EditText component = null;

@@ -12,16 +12,18 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.android.cervezapp.R;
+import com.android.cervezapp.business.service.UsuarioService;
 import com.android.cervezapp.business.util.BitmapUtility;
 import com.android.cervezapp.domain.model.Comentario;
+import com.android.cervezapp.domain.model.Usuario;
 
-/**
- * @author John
- */
 public class ComentarioAdapter extends ArrayAdapter<Comentario> {
+
+	private UsuarioService usuarioService;
 
 	public ComentarioAdapter(Context context) {
 		super(context, R.layout.comentario_adapter, new ArrayList<Comentario>());
+		this.usuarioService = UsuarioService.getInstance(this.getContext());
 	}
 
 	@Override
@@ -35,8 +37,9 @@ public class ComentarioAdapter extends ArrayAdapter<Comentario> {
 		RatingBar comentarioPuntajeRatingBar = (RatingBar) convertView.findViewById(R.id.comentarioPuntajeRatingBar);
 
 		Comentario comentario = this.getItem(position);
-		fotoUsuarioListView.setImageBitmap(BitmapUtility.getImage(comentario.getFoto()));
-		comentarioUserNameTextView.setText(comentario.getUserName());
+		Usuario usuario = this.usuarioService.getById(comentario.getUserId());
+		fotoUsuarioListView.setImageBitmap(BitmapUtility.getImage(usuario.getFoto()));
+		comentarioUserNameTextView.setText(usuario.getUserName());
 		comentarioPreviewTextView.setText(comentario.getPreview());
 		comentarioPuntajeRatingBar.setRating(comentario.getPuntaje());
 

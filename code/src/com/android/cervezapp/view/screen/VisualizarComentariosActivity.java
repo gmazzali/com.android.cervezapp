@@ -18,12 +18,10 @@ import com.android.cervezapp.view.adapter.ComentarioAdapter;
 
 /**
  * Ventana de listado de comentarios.
- * 
- * @author John
  */
 public class VisualizarComentariosActivity extends Activity {
 
-	private ComentarioService comentarioService = ComentarioService.getInstance();
+	private ComentarioService comentarioService = ComentarioService.getInstance(this);
 
 	private ListView comentariosListView;
 

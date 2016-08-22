@@ -34,9 +34,6 @@ import com.android.cervezapp.view.watcher.NombreWatcher;
 import com.android.cervezapp.view.watcher.TelefonoWatcher;
 import com.android.cervezapp.view.watcher.UserWatcher;
 
-/**
- * @author Billy
- */
 public class EdicionUsuarioActivity extends Activity {
 
 	private Usuario usuario;
@@ -73,16 +70,16 @@ public class EdicionUsuarioActivity extends Activity {
 		this.usuario = (Usuario) this.getIntent().getSerializableExtra(Usuario.class.getName());
 		this.usuarioNuevo = this.usuario == null;
 
-		this.userNameEditText = (EditText) this.findViewById(R.id.userNameEditText);
-		this.nombreEditText = (EditText) this.findViewById(R.id.nameEditText);
-		this.apellidoEditText = (EditText) this.findViewById(R.id.lastnameEditText);
-		this.fechaNacimientoEditText = (EditText) this.findViewById(R.id.birthdayEditText);
-		this.telefonoEditText = (EditText) this.findViewById(R.id.telephoneEditText);
-		this.emailEditText = (EditText) this.findViewById(R.id.emailEditText);
-		this.fotoPerfilImageView = (ImageView) this.findViewById(R.id.fotoPerfilEdicionImageView);
-		this.fechaNacimientoButton = (Button) this.findViewById(R.id.birthdayButton);
-		this.sexoSpinner = (Spinner) this.findViewById(R.id.sexoSpinner);
-		this.fumadorCheckBox = (CheckBox) this.findViewById(R.id.fumadorCheckBox);
+		this.fotoPerfilImageView = (ImageView) this.findViewById(R.id.userFotoEdicionImageView);
+		this.userNameEditText = (EditText) this.findViewById(R.id.userUserNameEditText);
+		this.nombreEditText = (EditText) this.findViewById(R.id.userNameEditText);
+		this.apellidoEditText = (EditText) this.findViewById(R.id.userLastnameEditText);
+		this.fechaNacimientoEditText = (EditText) this.findViewById(R.id.userBirthdayEditText);
+		this.telefonoEditText = (EditText) this.findViewById(R.id.userTelephoneEditText);
+		this.emailEditText = (EditText) this.findViewById(R.id.userEmailEditText);
+		this.fechaNacimientoButton = (Button) this.findViewById(R.id.userBirthdayButton);
+		this.sexoSpinner = (Spinner) this.findViewById(R.id.userSexoSpinner);
+		this.fumadorCheckBox = (CheckBox) this.findViewById(R.id.userFumadorCheckBox);
 
 		this.sexoAdapter = new SexoAdapter(this);
 		this.sexoSpinner.setAdapter(this.sexoAdapter);
@@ -109,8 +106,7 @@ public class EdicionUsuarioActivity extends Activity {
 			this.apellidoEditText.setText(this.usuario.getApellido());
 			this.sexoSpinner.setSelection(this.sexoAdapter.getPosition(this.usuario.getSexo()));
 			if (this.usuario.getFechaNacimiento() != null) {
-				this.fechaNacimientoEditText.setText(new SimpleDateFormat(Constants.DATE_FORMAT, Locale.getDefault()).format(this.usuario
-						.getFechaNacimiento()));
+				this.fechaNacimientoEditText.setText(new SimpleDateFormat(Constants.DATE_FORMAT, Locale.getDefault()).format(this.usuario.getFechaNacimiento()));
 			}
 			this.telefonoEditText.setText(this.usuario.getTelefono());
 			this.emailEditText.setText(this.usuario.getEmail());
@@ -148,8 +144,7 @@ public class EdicionUsuarioActivity extends Activity {
 			throw new RuntimeException("El usuario no tiene un sexo seleccionado");
 		}
 		if (!this.fechaNacimientoEditText.getText().toString().trim().isEmpty() && this.fechaNacimientoEditText.getError() == null) {
-			this.usuario.setFechaNacimiento(new SimpleDateFormat(Constants.DATE_FORMAT, Locale.getDefault()).parse(this.fechaNacimientoEditText
-					.getText().toString()));
+			this.usuario.setFechaNacimiento(new SimpleDateFormat(Constants.DATE_FORMAT, Locale.getDefault()).parse(this.fechaNacimientoEditText.getText().toString()));
 		} else {
 			throw new RuntimeException("El usuario no tiene una fecha de nacimiento válida");
 		}
@@ -208,26 +203,26 @@ public class EdicionUsuarioActivity extends Activity {
 
 		if (request != null && response != null) {
 			switch (request) {
-				case SACAR_FOTO_PERFIL:
-					switch (response) {
+			case SACAR_FOTO_PERFIL:
+				switch (response) {
 
-						case SACAR_FOTO_PERFIL_EXITOSO:
-							Bitmap foto = (Bitmap) data.getExtras().get("data");
-							ImageHolder.setFoto(foto);
-							this.fotoPerfilImageView.setImageBitmap(ImageHolder.getFoto());
-							break;
+				case SACAR_FOTO_PERFIL_EXITOSO:
+					Bitmap foto = (Bitmap) data.getExtras().get("data");
+					ImageHolder.setFoto(foto);
+					this.fotoPerfilImageView.setImageBitmap(ImageHolder.getFoto());
+					break;
 
-						case SACAR_FOTO_PERFIL_FALLIDO:
-							Toast.makeText(this, "Se cancelo la foto", Toast.LENGTH_SHORT).show();
-							break;
-
-						default:
-							break;
-					}
+				case SACAR_FOTO_PERFIL_FALLIDO:
+					Toast.makeText(this, "Se cancelo la foto", Toast.LENGTH_SHORT).show();
 					break;
 
 				default:
 					break;
+				}
+				break;
+
+			default:
+				break;
 			}
 		} else {
 			Toast.makeText(this, "Problemas desconocido", Toast.LENGTH_SHORT).show();

@@ -6,22 +6,30 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+
 import com.android.cervezapp.domain.model.Comentario;
-import com.android.cervezapp.domain.model.Usuario;
 
 /**
  * @author John
  */
+@SuppressLint("UseSparseArrays")
 public class ComentarioDao implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private static ComentarioDao instance = new ComentarioDao();
+	private static ComentarioDao instance;
 
 	private Map<Long, Comentario> mapa = new HashMap<Long, Comentario>();
 
-	public static ComentarioDao getInstance() {
-		return ComentarioDao.instance;
+	// TODO Terminar el dao de comentarios
+	public static ComentarioDao getInstance(Context context) {
+		if (instance == null) {
+			instance = new ComentarioDao();
+			// instance.barDataBaseAdapter = BarDataBaseAdapter.getInstance(context);
+		}
+		return instance;
 	}
 
 	private ComentarioDao() {

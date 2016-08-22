@@ -1,22 +1,21 @@
 package com.android.cervezapp.domain.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import com.android.cervezapp.business.service.UsuarioService;
-import com.android.cervezapp.domain.util.SexoEnum;
 
 public class Comentario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
+
 	private String contenido;
+
 	private String preview;
+
 	private Float puntaje;
+
 	private Long userId;
+
 	private Long barId;
 
 	@Override
@@ -80,12 +79,20 @@ public class Comentario implements Serializable {
 	public void setPuntaje(Float puntaje) {
 		this.puntaje = puntaje;
 	}
-	
-	public String getUserName(){
-		return UsuarioService.getInstance().getById(userId).getUserName();
+
+	public Long getBarId() {
+		return barId;
 	}
-	
-	public byte[] getFoto() {
-		return UsuarioService.getInstance().getById(userId).getFoto();
+
+	public void setBarId(Long barId) {
+		this.barId = barId;
+	}
+
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 }
