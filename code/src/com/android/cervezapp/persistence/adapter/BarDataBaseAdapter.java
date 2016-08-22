@@ -3,24 +3,19 @@ package com.android.cervezapp.persistence.adapter;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.content.ContentValues;
-import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteException;
-
 import com.android.cervezapp.domain.model.Bar;
 import com.android.cervezapp.persistence.helper.BarDataBaseHelper;
 
-public class BarDataBaseAdapter {
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteOpenHelper;
+
+public class BarDataBaseAdapter extends AbstractDataBaseAdapter {
+
+	private static final long serialVersionUID = 1L;
 
 	private static BarDataBaseAdapter instance;
-
-	private Context context;
-
-	private BarDataBaseHelper dbHelper;
-
-	private SQLiteDatabase db;
 
 	public static BarDataBaseAdapter getInstance(Context context) {
 		if (instance == null) {
@@ -30,44 +25,15 @@ public class BarDataBaseAdapter {
 	}
 
 	private BarDataBaseAdapter(Context context) {
-		this.context = context;
+		super(context);
 	}
 
-	public BarDataBaseAdapter abrir() throws SQLiteException {
-		this.dbHelper = new BarDataBaseHelper(this.context);
-		this.db = this.dbHelper.getWritableDatabase();
-		return this;
+	@Override
+	protected SQLiteOpenHelper getSQLiteHelper(Context context) {
+		return new BarDataBaseHelper(context);
 	}
 
-	public void cerrar() {
-		if (this.db != null) {
-			this.db.close();
-		}
-	}
-
-	public void limpiar() {
-		this.db.delete(BarDataBaseHelper.TABLE_NAME, null, null);
-	}
-
-	public void beginTransaction() {
-		if (this.db != null) {
-			this.db.beginTransaction();
-		}
-	}
-
-	public void flush() {
-		if (this.db != null) {
-			this.db.setTransactionSuccessful();
-		}
-	}
-
-	public void commit() {
-		if (this.db != null) {
-			this.db.endTransaction();
-		}
-	}
-
-	public long agregar(Bar bar) {
+	public long saveBar(Bar bar) {
 		ContentValues valores = new ContentValues();
 		valores.put(BarDataBaseHelper.CAMPO_NOMBRE, bar.getNombre());
 		valores.put(BarDataBaseHelper.CAMPO_DIRECCION, bar.getDireccion());
@@ -77,10 +43,16 @@ public class BarDataBaseAdapter {
 		valores.put(BarDataBaseHelper.CAMPO_FOTO, bar.getFoto());
 		valores.put(BarDataBaseHelper.CAMPO_LATITUD, bar.getLatitud());
 		valores.put(BarDataBaseHelper.CAMPO_LONGITUD, bar.getLongitud());
-		return this.db.insert(BarDataBaseHelper.TABLE_NAME, null, valores);
+
+		this.open();
+		this.begin();
+		long valor = this.insert(BarDataBaseHelper.TABLE_NAME, valores);
+		this.commit();
+
+		return valor;
 	}
 
-	public void modificar(Bar bar) {
+	public void updateBar(Bar bar) {
 		String[] argumentos = new String[] { String.valueOf(bar.getId()) };
 		ContentValues valores = new ContentValues();
 		valores.put(BarDataBaseHelper.CAMPO_NOMBRE, bar.getNombre());
@@ -91,18 +63,31 @@ public class BarDataBaseAdapter {
 		valores.put(BarDataBaseHelper.CAMPO_FOTO, bar.getFoto());
 		valores.put(BarDataBaseHelper.CAMPO_LATITUD, bar.getLatitud());
 		valores.put(BarDataBaseHelper.CAMPO_LONGITUD, bar.getLongitud());
-		this.db.update(BarDataBaseHelper.TABLE_NAME, valores, BarDataBaseHelper.CAMPO_ID + " = ?", argumentos);
+
+		this.open();
+		this.begin();
+		this.update(BarDataBaseHelper.TABLE_NAME, valores, BarDataBaseHelper.CAMPO_ID + " = ?", argumentos);
+		this.commit();
 	}
 
-	public void eliminar(Bar bar) {
+	public void deleteBar(Bar bar) {
 		String[] argumentos = new String[] { String.valueOf(bar.getId()) };
-		this.db.delete(BarDataBaseHelper.TABLE_NAME, BarDataBaseHelper.CAMPO_ID + " = ?", argumentos);
+
+		this.open();
+		this.begin();
+		this.delete(BarDataBaseHelper.TABLE_NAME, BarDataBaseHelper.CAMPO_ID + " = ?", argumentos);
+		this.commit();
 	}
 
-	public List<Bar> obtenerTodos() {
+	public List<Bar> getAllBares() {
 		String[] campos = { BarDataBaseHelper.CAMPO_NOMBRE, BarDataBaseHelper.CAMPO_DIRECCION, BarDataBaseHelper.CAMPO_EMAIL, BarDataBaseHelper.CAMPO_TELEFONO,
 				BarDataBaseHelper.CAMPO_FUMADOR, BarDataBaseHelper.CAMPO_FOTO, BarDataBaseHelper.CAMPO_LATITUD, BarDataBaseHelper.CAMPO_LONGITUD };
-		Cursor resultado = this.db.query(BarDataBaseHelper.TABLE_NAME, campos, null, null, null, null, null);
+
+		this.open();
+		this.begin();
+		Cursor resultado = this.query(BarDataBaseHelper.TABLE_NAME, campos, null, null);
+		this.commit();
+
 		List<Bar> bares = new ArrayList<Bar>();
 		if (resultado != null) {
 			resultado.moveToFirst();
@@ -123,14 +108,18 @@ public class BarDataBaseAdapter {
 		return bares;
 	}
 
-	public Bar buscar(Long id) {
-		Bar bar = null;
+	public Bar getById(Long id) {
 		String[] campos = { BarDataBaseHelper.CAMPO_NOMBRE, BarDataBaseHelper.CAMPO_DIRECCION, BarDataBaseHelper.CAMPO_EMAIL, BarDataBaseHelper.CAMPO_TELEFONO,
 				BarDataBaseHelper.CAMPO_FUMADOR, BarDataBaseHelper.CAMPO_FOTO, BarDataBaseHelper.CAMPO_LATITUD, BarDataBaseHelper.CAMPO_LONGITUD };
+
 		String[] argumentos = { String.valueOf(id) };
 
-		Cursor resultado = this.db.query(BarDataBaseHelper.TABLE_NAME, campos, BarDataBaseHelper.CAMPO_ID + " = ?", argumentos, null, null, null);
+		this.open();
+		this.begin();
+		Cursor resultado = this.query(BarDataBaseHelper.TABLE_NAME, campos, BarDataBaseHelper.CAMPO_ID + " = ?", argumentos);
+		this.commit();
 
+		Bar bar = null;
 		if (resultado != null) {
 			resultado.moveToFirst();
 			bar = new Bar();

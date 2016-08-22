@@ -1,14 +1,5 @@
 package com.android.cervezapp.view.screen;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ListView;
-import android.widget.Toast;
-
 import com.android.cervezapp.R;
 import com.android.cervezapp.business.service.UsuarioService;
 import com.android.cervezapp.domain.model.Usuario;
@@ -16,20 +7,31 @@ import com.android.cervezapp.domain.util.RequestCodeEnum;
 import com.android.cervezapp.domain.util.ResponseCodeEnum;
 import com.android.cervezapp.view.adapter.UsuarioAdapter;
 
-public class SeleccionUsuarioActivity extends Activity {
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
+import android.widget.Toast;
 
-	private UsuarioService usuarioService = UsuarioService.getInstance(this);
+public class UsuarioSeleccionActivity extends Activity {
+
+	private UsuarioService usuarioService = UsuarioService.getInstance(this);;
 
 	private ListView usuariosListView;
 
 	private UsuarioAdapter usuarioAdapter;
 
-	private int posicionSeleccionada;
+	private int posicionSeleccionada = -1;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		this.setContentView(R.layout.activity_seleccion_usuario);
+		this.setContentView(R.layout.usuario_seleccion_activity);
 
 		this.usuarioAdapter = new UsuarioAdapter(this);
 		this.usuarioAdapter.addAll(this.usuarioService.getAllUsuarios());
@@ -51,15 +53,31 @@ public class SeleccionUsuarioActivity extends Activity {
 		});
 	}
 
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		this.getMenuInflater().inflate(R.menu.usuario_seleccion_menu, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		int id = item.getItemId();
+		if (id == R.id.usuarioSeleccionMenuAgregarUsuarioItem) {
+			this.agregarUsuario(item.getActionView());
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
 	public void agregarUsuario(View view) {
-		Intent intent = new Intent(this, EdicionUsuarioActivity.class);
+		Intent intent = new Intent(this, UsuarioEdicionActivity.class);
 		this.startActivityForResult(intent, RequestCodeEnum.AGREGAR_USUARIO.getRequest());
 	}
 
 	public void modificarUsuario(View view) {
 		if (this.posicionSeleccionada >= 0) {
 			Usuario usuario = (Usuario) this.usuariosListView.getItemAtPosition(this.posicionSeleccionada);
-			Intent intent = new Intent(this, EdicionUsuarioActivity.class);
+			Intent intent = new Intent(this, UsuarioEdicionActivity.class);
 			intent.putExtra(Usuario.class.getName(), usuario);
 			this.startActivityForResult(intent, RequestCodeEnum.MODIFICAR_USUARIO.getRequest());
 		} else {
@@ -70,7 +88,7 @@ public class SeleccionUsuarioActivity extends Activity {
 	public void ingresarSistema(View view) {
 		if (this.posicionSeleccionada >= 0) {
 			Usuario usuario = (Usuario) this.usuariosListView.getItemAtPosition(this.posicionSeleccionada);
-			Intent intent = new Intent(this, MainActivity.class);
+			Intent intent = new Intent(this, PantallaPrincipalActivity.class);
 			intent.putExtra(Usuario.class.getName(), usuario);
 			this.startActivity(intent);
 		} else {

@@ -5,19 +5,19 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-
 import com.android.cervezapp.business.util.BitmapUtility;
 import com.android.cervezapp.domain.model.Usuario;
 import com.android.cervezapp.persistence.dao.UsuarioDao;
-import com.android.cervezapp.persistence.util.IdGenerator;
+
+import android.content.Context;
+import android.graphics.Bitmap;
 
 public class UsuarioService implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	// private Context context;
+
 	private static UsuarioService instance;
+
 	private UsuarioDao usuarioDao;
 
 	public static UsuarioService getInstance(Context context) {
@@ -25,7 +25,7 @@ public class UsuarioService implements Serializable {
 			instance = new UsuarioService();
 			instance.usuarioDao = UsuarioDao.getInstance(context);
 		}
-		return null;
+		return instance;
 	}
 
 	public Usuario setUpUsuario(Long idUsuario, Bitmap fotoDefault) {
@@ -51,7 +51,7 @@ public class UsuarioService implements Serializable {
 	public List<Usuario> getAllUsuarios() {
 		try {
 			return this.usuarioDao.getAllUsuarios();
-		} catch (ParseException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return new ArrayList<Usuario>();
@@ -60,14 +60,13 @@ public class UsuarioService implements Serializable {
 	public Usuario getById(Long id) {
 		try {
 			return this.usuarioDao.getById(id);
-		} catch (ParseException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
 
 	public void saveUsuario(Usuario usuario) {
-		usuario.setId(IdGenerator.getNextId(Usuario.class));
 		this.usuarioDao.saveUsuario(usuario);
 	}
 

@@ -28,22 +28,22 @@ public class BarDao implements Serializable {
 	}
 
 	public List<Bar> getAllBares() {
-		return this.barDataBaseAdapter.obtenerTodos();
+		return this.barDataBaseAdapter.getAllBares();
 	}
 
 	public Bar getById(Long id) {
-		return this.barDataBaseAdapter.buscar(id);
+		return this.barDataBaseAdapter.getById(id);
 	}
 
 	public long saveBar(Bar bar) {
-		return this.barDataBaseAdapter.agregar(bar);
+		return this.barDataBaseAdapter.saveBar(bar);
 	}
 
 	public void updateBar(Bar bar) {
-		this.barDataBaseAdapter.modificar(bar);
+		this.barDataBaseAdapter.updateBar(bar);
 	}
 
 	public void deleteBar(Bar bar) {
-		this.barDataBaseAdapter.eliminar(bar);
+		this.barDataBaseAdapter.deleteBar(bar);
 	}
 }

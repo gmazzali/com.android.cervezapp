@@ -3,6 +3,8 @@ package com.android.cervezapp.view.screen;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -49,6 +51,22 @@ public class BarAdministracionActivity extends Activity {
 				}
 			}
 		});
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		this.getMenuInflater().inflate(R.menu.bar_administracion_menu, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		int id = item.getItemId();
+		if (id == R.id.barAdminsitracionMenuAgregarBarItem) {
+			this.agregarBar(item.getActionView());
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 
 	public void agregarBar(View view) {

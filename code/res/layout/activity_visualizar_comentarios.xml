@@ -14,7 +14,7 @@
         android:id="@+id/botonesIngresoLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/usuarioListView"
+        android:layout_alignBottom="@id/comentarioListView"
         android:orientation="vertical" >
 
 <!--         <LinearLayout -->
@@ -45,8 +45,7 @@
         <Button
             android:id="@+id/agregarComentarioButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:onClick="agregarComentario"
             android:text="@string/visualizar.comentarios.activity.button.add" />

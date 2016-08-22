@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.content.Context;
 
+import com.android.cervezapp.domain.model.Bar;
 import com.android.cervezapp.domain.model.Comentario;
 import com.android.cervezapp.persistence.dao.ComentarioDao;
 import com.android.cervezapp.persistence.util.IdGenerator;
@@ -54,6 +55,11 @@ public class ComentarioService implements Serializable {
 
 	public Comentario getById(Long id) {
 		return this.comentarioDao.getById(id);
+	}
+
+	// Se usa para cargar los comentarios a cada bar!
+	public List<Comentario> getByBar(Bar bar) {
+		return this.comentarioDao.getByBar(bar);
 	}
 
 	public void saveComentario(Comentario comentario) {

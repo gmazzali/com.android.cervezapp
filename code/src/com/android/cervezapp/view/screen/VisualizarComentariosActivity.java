@@ -73,7 +73,7 @@ public class VisualizarComentariosActivity extends Activity {
 	public void agregarComentario(View view) {
 		if (this.posicionSeleccionada >= 0) {
 			Comentario comentario = (Comentario) this.comentariosListView.getItemAtPosition(this.posicionSeleccionada);
-			Intent intent = new Intent(this, MainActivity.class);
+			Intent intent = new Intent(this, PantallaPrincipalActivity.class);
 			intent.putExtra(Comentario.class.getName(), comentario);
 			this.startActivity(intent);
 		} else {

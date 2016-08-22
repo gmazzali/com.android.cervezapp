@@ -17,10 +17,17 @@
         android:name="Cervezapp"
         android:allowBackup="true"
         android:icon="@drawable/pub"
-        android:label="@string/main.activity.title"
+        android:label="@string/pantalla.principal.activity.title"
         android:theme="@style/HoloTheme" >
         <activity
-            android:name="com.android.cervezapp.view.screen.SeleccionUsuarioActivity"
+            android:name="com.android.cervezapp.view.screen.PantallaPrincipalActivity"
+            android:label="@string/pantalla.principal.activity.title" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.android.cervezapp.view.screen.UsuarioSeleccionActivity"
             android:label="@string/seleccion.usuario.activity.title" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,15 +36,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.android.cervezapp.view.screen.MainActivity"
-            android:label="@string/main.activity.title" >
+            android:name="com.android.cervezapp.view.screen.UsuarioEdicionActivity"
+            android:label="@string/edicion.usuario.activity.title" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.android.cervezapp.view.screen.EdicionUsuarioActivity"
-            android:label="@string/edicion.usuario.activity.title" >
+            android:name="com.android.cervezapp.view.screen.BarAdministracionActivity"
+            android:label="@string/bar.administracion.activity.title" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.android.cervezapp.view.screen.BarEdicionActivity"
+            android:label="@string/bar.edicion.activity.title" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>

@@ -1,9 +1,5 @@
 package com.android.cervezapp.domain.util;
 
-/**
- * @author Billy
- */
-
 public enum RequestCodeEnum {
 
 	// USUARIO
@@ -17,6 +13,8 @@ public enum RequestCodeEnum {
 	// BAR
 
 	SACAR_FOTO_BAR(200),
+
+	ADMINISTRAR_BARES(203),
 
 	AGREGAR_BAR(201),
 

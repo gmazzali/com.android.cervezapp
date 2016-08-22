@@ -6,34 +6,33 @@
     tools:context="com.android.cervezapp.view.screen.UsuarioSeleccionActivity" >
 
     <ListView
-        android:id="@+id/baresListView"
+        android:id="@+id/usuarioListView"
         android:layout_width="match_parent"
         android:layout_height="fill_parent" />
 
     <LinearLayout
-        android:id="@+id/botonesAdministrarBaresLayout"
+        android:id="@+id/botonesIngresoLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/baresListView"
-        android:orientation="horizontal" >
+        android:layout_alignBottom="@id/usuarioListView"
+        android:orientation="vertical" >
 
         <Button
-            style="@android:attr/buttonBarButtonStyle"
-            android:id="@+id/editarBarButton"
+            android:id="@+id/editarUsuarioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_weight="1"
-            android:onClick="modificarBar"
-            android:text="@string/bar.administracion.activity.button.modify" />
+            android:onClick="modificarUsuario"
+            android:text="@string/seleccion.usuario.activity.button.modify" />
 
         <Button
-            style="@android:attr/buttonBarButtonStyle"
-            android:id="@+id/eliminarBarButton"
+            android:id="@+id/ingresarSistemaButton"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="eliminarBar"
-            android:text="@string/bar.administracion.activity.button.delete" />
+            android:onClick="ingresarSistema"
+            android:text="@string/seleccion.usuario.activity.button.login" />
     </LinearLayout>
+
 </RelativeLayout>

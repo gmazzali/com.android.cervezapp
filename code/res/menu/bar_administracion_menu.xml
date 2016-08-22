@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.android.cervezapp.MainActivity" >
+
+    <item
+        android:id="@+id/barAdminsitracionMenuAgregarBarItem"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        android:title="@string/bar.administracion.menu.agregar.bar"/>
+
+</menu>

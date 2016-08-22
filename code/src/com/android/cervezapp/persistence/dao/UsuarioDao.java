@@ -3,61 +3,50 @@ package com.android.cervezapp.persistence.dao;
 import java.io.Serializable;
 import java.text.ParseException;
 import java.util.List;
-import android.content.Context;
+
 import com.android.cervezapp.domain.model.Usuario;
 import com.android.cervezapp.persistence.adapter.UsuarioDataBaseAdapter;
+import com.android.cervezapp.persistence.util.IdGenerator;
+
+import android.content.Context;
 
 public class UsuarioDao implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	//private Context context;
+
 	private static UsuarioDao instance;
+
 	private UsuarioDataBaseAdapter usuarioDataBaseAdapter;
-	//private Map<Long, Usuario> mapa = new HashMap<Long, Usuario>();
-
-
-	private UsuarioDao() {
-	}
-	
-//	private UsuarioDao(Context context) {
-//		this.context = context;
-//	}
-	
-	public static UsuarioDao getInstance() {
-		return UsuarioDao.instance;
-	}
 
 	public static UsuarioDao getInstance(Context context) {
-		if ( instance == null ) {
+		if (instance == null) {
 			instance = new UsuarioDao();
 			instance.usuarioDataBaseAdapter = UsuarioDataBaseAdapter.getInstance(context);
 		}
-		return null;
+		return instance;
 	}
-	
+
+	private UsuarioDao() {
+	}
+
 	public List<Usuario> getAllUsuarios() throws ParseException {
-		//return new ArrayList<Usuario>(this.mapa.values());
-		return this.usuarioDataBaseAdapter.obtenerTodos();
+		return this.usuarioDataBaseAdapter.getAllUsuarios();
 	}
 
 	public Usuario getById(Long id) throws ParseException {
-		//return this.mapa.get(id);
-		return this.usuarioDataBaseAdapter.buscar(id);
+		return this.usuarioDataBaseAdapter.getById(id);
 	}
 
 	public void saveUsuario(Usuario usuario) {
-		//this.mapa.put(usuario.getId(), usuario);
-		this.usuarioDataBaseAdapter.agregar(usuario);
+		usuario.setId(IdGenerator.getNextId(Usuario.class));
+		this.usuarioDataBaseAdapter.saveUsuario(usuario);
 	}
 
 	public void updateUsuario(Usuario usuario) {
-		//this.mapa.put(usuario.getId(), usuario);
-		this.usuarioDataBaseAdapter.modificar(usuario);
+		this.usuarioDataBaseAdapter.updateUsuario(usuario);
 	}
 
 	public void deleteUsuario(Usuario usuario) {
-		//this.mapa.remove(usuario.getId());
-		this.usuarioDataBaseAdapter.eliminar(usuario);
+		this.usuarioDataBaseAdapter.deleteUsuario(usuario);
 	}
-	
 }

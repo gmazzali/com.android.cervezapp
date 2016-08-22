@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="menu.configuracion">Configuraciones</string>
-    <string name="main.activity.title">Cervezapp</string>
-    <string name="main.activity.foto.perfil.content">Foto de Perfil</string>
-    <string name="main.activity.boton.bares">BARES</string>
-    <string name="main.activity.boton.buscar.bares">BUSCAR</string>
+    <string name="pantalla.principal.menu.configuracion">Configuraciones</string>
+    <string name="pantalla.principal.menu.bares">Bares</string>
+    <string name="pantalla.principal.activity.title">Cervezapp</string>
+    <string name="pantalla.principal.activity.foto.content">Foto de Perfil</string>
+    <string name="pantalla.principal.activity.boton.bares">BARES</string>
+    <string name="pantalla.principal.activity.boton.buscar.bares">BUSCAR</string>
+    
     <string name="seleccion.usuario.activity.foto.perfil.content">Foto de Perfil</string>
     <string name="seleccion.usuario.activity.title">Cervezapp</string>
     <string name="seleccion.usuario.activity.button.add">Agregar usuario</string>
@@ -34,30 +36,31 @@
     <string name="edicion.usuario.activity.field.fumador">Fumador?</string>
     <string name="edicion.usuario.activity.button.accept">Guardar</string>
     <string name="edicion.usuario.activity.button.cancel">Cancelar</string>    
+   
     <string name="visualizar.comentarios.activity.button.add">Agregar comentario</string>    
-    <string name="visualizar.comentarios.activity.title">Comentarios</string>
+    <string name="visualizar.comentarios.activity.title">Comentarios</string>    
     
+    <string name="bar.administracion.menu.agregar.bar">Agregar Bar</string>
+    <string name="bar.administracion.activity.foto.content">Foto de Perfil</string>
+    <string name="bar.administracion.activity.title">Bares</string>
+    <string name="bar.administracion.activity.button.add">Agregar Bar</string>
+    <string name="bar.administracion.activity.button.modify">Modificar Bar</string>
+    <string name="bar.administracion.activity.button.delete">Eliminar Bar</string>
     
-    <string name="administracion.bar.activity.foto.content">Foto de Perfil</string>
-    <string name="administracion.bar.activity.title">Bares</string>
-    <string name="administracion.bar.activity.button.add">Agregar Bar</string>
-    <string name="administracion.bar.activity.button.modify">Modificar Bar</string>
-    <string name="administracion.bar.activity.button.delete">Eliminar Bar</string>
-    
-    <string name="edicion.bar.activity.title">Bar</string>
-    <string name="edicion.bar.activity.foto.content">Foto</string>
-    <string name="edicion.bar.activity.boton.sacar.foto">Tomar foto</string>
-    <string name="edicion.bar.activity.label.name">Nombre:</string>
-    <string name="edicion.bar.activity.field.name">Nombre</string>
-    <string name="edicion.bar.activity.label.address">Dirección:</string>
-    <string name="edicion.bar.activity.field.address">Dirección</string>
-    <string name="edicion.bar.activity.label.email">E-Mail:</string>
-    <string name="edicion.bar.activity.field.email">E-Mail</string>
-    <string name="edicion.bar.activity.label.telephone">Teléfono:</string>
-    <string name="edicion.bar.activity.field.telephone">Teléfono</string>
-    <string name="edicion.bar.activity.label.fumador">Fumador?</string>
-    <string name="edicion.bar.activity.field.fumador">Fumador?</string>
-    <string name="edicion.bar.activity.button.accept">Guardar</string>
-    <string name="edicion.bar.activity.button.cancel">Cancelar</string>    
+    <string name="bar.edicion.activity.title">Bar</string>
+    <string name="bar.edicion.activity.foto.content">Foto</string>
+    <string name="bar.edicion.activity.boton.sacar.foto">Tomar foto</string>
+    <string name="bar.edicion.activity.label.name">Nombre:</string>
+    <string name="bar.edicion.activity.field.name">Nombre</string>
+    <string name="bar.edicion.activity.label.address">Dirección:</string>
+    <string name="bar.edicion.activity.field.address">Dirección</string>
+    <string name="bar.edicion.activity.label.email">E-Mail:</string>
+    <string name="bar.edicion.activity.field.email">E-Mail</string>
+    <string name="bar.edicion.activity.label.telephone">Teléfono:</string>
+    <string name="bar.edicion.activity.field.telephone">Teléfono</string>
+    <string name="bar.edicion.activity.label.fumador">Fumador?</string>
+    <string name="bar.edicion.activity.field.fumador">Fumador?</string>
+    <string name="bar.edicion.activity.button.accept">Guardar</string>
+    <string name="bar.edicion.activity.button.cancel">Cancelar</string>    
 
 </resources>

@@ -63,6 +63,9 @@ public enum ResponseCodeEnum {
 			case SACAR_FOTO_BAR:
 				return new ResponseCodeEnum[] { SACAR_FOTO_BAR_EXITOSO, SACAR_FOTO_BAR_FALLIDO };
 
+			case ADMINISTRAR_BARES:
+				return new ResponseCodeEnum[] {};
+
 			case AGREGAR_BAR:
 				return new ResponseCodeEnum[] { ACEPTAR_AGREGAR_NUEVO_BAR, CANCELAR_AGREDAR_NUEVO_BAR };
 

@@ -4,9 +4,9 @@
     tools:context="com.android.cervezapp.MainActivity" >
 
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/pantallaPrincipalBaresItem"
         android:orderInCategory="100"
         android:showAsAction="always"
-        android:title="@string/menu.configuracion"/>
+        android:title="@string/pantalla.principal.menu.bares"/>
 
 </menu>

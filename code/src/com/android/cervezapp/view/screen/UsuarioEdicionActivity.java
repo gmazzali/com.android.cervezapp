@@ -34,7 +34,7 @@ import com.android.cervezapp.view.watcher.NombreWatcher;
 import com.android.cervezapp.view.watcher.TelefonoWatcher;
 import com.android.cervezapp.view.watcher.UserWatcher;
 
-public class EdicionUsuarioActivity extends Activity {
+public class UsuarioEdicionActivity extends Activity {
 
 	private Usuario usuario;
 
@@ -65,7 +65,7 @@ public class EdicionUsuarioActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		this.setContentView(R.layout.activity_edicion_usuario);
+		this.setContentView(R.layout.usuario_edicion_activity);
 
 		this.usuario = (Usuario) this.getIntent().getSerializableExtra(Usuario.class.getName());
 		this.usuarioNuevo = this.usuario == null;

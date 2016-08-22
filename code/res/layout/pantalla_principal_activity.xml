@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_centerHorizontal="true"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     tools:context="com.android.cervezapp.view.MainActivity" >
 
     <LinearLayout
@@ -23,7 +23,7 @@
             android:layout_height="@dimen/main.activity.foto.perfil.height"
             android:layout_marginTop="5dp"
             android:adjustViewBounds="true"
-            android:contentDescription="@string/main.activity.foto.perfil.content"
+            android:contentDescription="@string/pantalla.principal.activity.foto.content"
             android:scaleType="fitCenter"
             android:src="@drawable/leprechaun_drunk_icon" />
 
@@ -35,7 +35,8 @@
             android:layout_weight="1"
             android:drawableTop="@drawable/search"
             android:ems="10"
-            android:text="@string/main.activity.boton.buscar.bares" />
+            android:onClick="listarBares"
+            android:text="@string/pantalla.principal.activity.boton.buscar.bares" />
 
         <Button
             android:id="@+id/baresButton"
@@ -46,18 +47,7 @@
             android:drawableTop="@drawable/beer_clink"
             android:ems="10"
             android:onClick="listarComentarios"
-            android:text="@string/main.activity.boton.bares" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/horizontalLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/horizontalLayout1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal" >
+            android:text="@string/pantalla.principal.activity.boton.bares" />
     </LinearLayout>
 
 </RelativeLayout>
